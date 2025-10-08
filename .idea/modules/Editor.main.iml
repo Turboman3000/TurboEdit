@@ -153,5 +153,6 @@
     <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:macosx-arm64:1.5.12" level="project" />
     <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:macosx-x86_64:1.5.12" level="project" />
     <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:windows-x86_64:1.5.12" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.google.protobuf:protobuf-java:4.32.1" level="project" />
   </component>
 </module>

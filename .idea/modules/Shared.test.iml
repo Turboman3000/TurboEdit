@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_21">
     <output-test url="file://$MODULE_DIR$/../../Shared/build/classes/java/test" />
     <exclude-output />
+    <content url="file://$MODULE_DIR$/../../Shared/build/generated/sources/proto/test/java" />
     <content url="file://$MODULE_DIR$/../../Shared/src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../Shared/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../Shared/src/test/resources" type="java-test-resource" />
@@ -10,6 +11,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="Shared.main" />
+    <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java:4.32.1" level="project" />
     <orderEntry type="library" name="Gradle: org.msgpack:msgpack-core:0.9.10" level="project" />
     <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter:5.10.0" level="project" />
     <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter-params:5.10.0" level="project" />
