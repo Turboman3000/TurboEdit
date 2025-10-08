@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.bytedeco:javacpp:ios-x86_64:1.5.12" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.bytedeco" artifactId="javacpp" version="1.5.12" baseVersion="1.5.12" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../packages/gradle/caches/modules-2/files-2.1/org.bytedeco/javacpp/1.5.12/a3ff8c9c055fd88feb2acac3ba34647fbdaa12f/javacpp-1.5.12-ios-x86_64.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

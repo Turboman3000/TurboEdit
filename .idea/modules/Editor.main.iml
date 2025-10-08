@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="Editor:main" external.linked.project.path="$MODULE_DIR$/../../Editor" external.root.project.path="$MODULE_DIR$/../../Editor" external.system.id="GRADLE" external.system.module.group="de.turboman.edit" external.system.module.type="sourceSet" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_21_PREVIEW">
+    <output url="file://$MODULE_DIR$/../../Editor/build/classes/java/main" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../Editor/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../Editor/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Editor/src/main/resources" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: io.github.mkpaz:atlantafx-base:2.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.msgpack:msgpack-core:0.9.10" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacv-platform:1.5.12" level="project" />
+    <orderEntry type="module" module-name="Editor.Shared.main" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-fxml:win:21" level="project" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:23" level="project" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:win:23" level="project" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-graphics:23" level="project" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-graphics:win:23" level="project" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-base:23" level="project" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-base:win:23" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacv:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:opencv-platform:4.11.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:openblas-platform:0.3.30-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:ffmpeg-platform:7.1.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:flycapture-platform:2.13.3.31-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libdc1394-platform:2.2.6-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect-platform:0.5.7-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect2-platform:0.2.0-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense-platform:1.12.4-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense2-platform:2.53.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:videoinput-platform:0.200-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus-platform:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:tesseract-platform:5.5.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:leptonica-platform:1.85.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp-platform:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:opencv:4.11.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:opencv:android-arm64:4.11.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:opencv:android-x86_64:4.11.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:opencv:ios-arm64:4.11.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:opencv:ios-x86_64:4.11.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:opencv:linux-arm64:4.11.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:opencv:linux-x86_64:4.11.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:opencv:macosx-arm64:4.11.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:opencv:macosx-x86_64:4.11.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:opencv:windows-x86_64:4.11.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:openblas:0.3.30-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:openblas:android-arm64:0.3.30-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:openblas:android-x86_64:0.3.30-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:openblas:ios-arm64:0.3.30-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:openblas:ios-x86_64:0.3.30-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:openblas:linux-arm64:0.3.30-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:openblas:linux-x86_64:0.3.30-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:openblas:macosx-arm64:0.3.30-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:openblas:macosx-x86_64:0.3.30-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:openblas:windows-x86_64:0.3.30-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:ffmpeg:7.1.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:ffmpeg:android-arm64:7.1.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:ffmpeg:android-x86_64:7.1.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:ffmpeg:linux-arm64:7.1.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:ffmpeg:linux-x86_64:7.1.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:ffmpeg:macosx-arm64:7.1.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:ffmpeg:macosx-x86_64:7.1.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:ffmpeg:windows-x86_64:7.1.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:flycapture:2.13.3.31-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:flycapture:linux-arm64:2.13.3.31-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:flycapture:linux-armhf:2.13.3.31-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:flycapture:linux-x86:2.13.3.31-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:flycapture:linux-x86_64:2.13.3.31-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:flycapture:windows-x86:2.13.3.31-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:flycapture:windows-x86_64:2.13.3.31-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libdc1394:2.2.6-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libdc1394:linux-arm64:2.2.6-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libdc1394:linux-armhf:2.2.6-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libdc1394:linux-ppc64le:2.2.6-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libdc1394:linux-x86:2.2.6-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libdc1394:linux-x86_64:2.2.6-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libdc1394:macosx-x86_64:2.2.6-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libdc1394:windows-x86:2.2.6-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libdc1394:windows-x86_64:2.2.6-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect:0.5.7-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect:linux-arm64:0.5.7-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect:linux-armhf:0.5.7-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect:linux-ppc64le:0.5.7-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect:linux-x86:0.5.7-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect:linux-x86_64:0.5.7-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect:macosx-x86_64:0.5.7-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect:windows-x86:0.5.7-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect:windows-x86_64:0.5.7-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect2:0.2.0-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect2:linux-x86:0.2.0-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect2:linux-x86_64:0.2.0-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect2:macosx-x86_64:0.2.0-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:libfreenect2:windows-x86_64:0.2.0-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense:1.12.4-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense:linux-arm64:1.12.4-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense:linux-armhf:1.12.4-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense:linux-x86:1.12.4-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense:linux-x86_64:1.12.4-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense:macosx-x86_64:1.12.4-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense:windows-x86:1.12.4-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense:windows-x86_64:1.12.4-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense2:2.53.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense2:linux-arm64:2.53.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense2:linux-armhf:2.53.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense2:linux-x86:2.53.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense2:linux-x86_64:2.53.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense2:macosx-x86_64:2.53.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense2:windows-x86:2.53.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:librealsense2:windows-x86_64:2.53.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:videoinput:0.200-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:videoinput:windows-x86:0.200-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:videoinput:windows-x86_64:0.200-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:android-arm:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:android-arm64:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:android-x86:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:android-x86_64:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:linux-arm64:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:linux-armhf:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:linux-ppc64le:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:linux-x86:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:linux-x86_64:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:macosx-x86_64:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:windows-x86:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:artoolkitplus:windows-x86_64:2.3.1-1.5.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:tesseract:5.5.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:tesseract:android-arm64:5.5.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:tesseract:android-x86_64:5.5.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:tesseract:linux-arm64:5.5.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:tesseract:linux-x86_64:5.5.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:tesseract:macosx-arm64:5.5.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:tesseract:macosx-x86_64:5.5.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:tesseract:windows-x86_64:5.5.1-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:leptonica:1.85.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:leptonica:android-arm64:1.85.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:leptonica:android-x86_64:1.85.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:leptonica:linux-arm64:1.85.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:leptonica:linux-x86_64:1.85.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:leptonica:macosx-arm64:1.85.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:leptonica:macosx-x86_64:1.85.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:leptonica:windows-x86_64:1.85.0-1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:android-arm64:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:android-x86_64:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:ios-arm64:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:ios-x86_64:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:linux-arm64:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:linux-ppc64le:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:linux-riscv64:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:linux-x86_64:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:macosx-arm64:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:macosx-x86_64:1.5.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.bytedeco:javacpp:windows-x86_64:1.5.12" level="project" />
+  </component>
+</module>

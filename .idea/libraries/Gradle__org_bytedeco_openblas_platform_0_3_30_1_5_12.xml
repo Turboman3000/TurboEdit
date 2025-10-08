@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.bytedeco:openblas-platform:0.3.30-1.5.12" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.bytedeco" artifactId="openblas-platform" version="0.3.30-1.5.12" baseVersion="0.3.30-1.5.12" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../packages/gradle/caches/modules-2/files-2.1/org.bytedeco/openblas-platform/0.3.30-1.5.12/9c8498f2187bffbf70d63d14264ff179560631fa/openblas-platform-0.3.30-1.5.12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.msgpack:msgpack-core:0.9.10" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.msgpack" artifactId="msgpack-core" version="0.9.10" baseVersion="0.9.10" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../packages/gradle/caches/modules-2/files-2.1/org.msgpack/msgpack-core/0.9.10/e7b1aa5f73766adfd3959370f61a9598254b86ae/msgpack-core-0.9.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

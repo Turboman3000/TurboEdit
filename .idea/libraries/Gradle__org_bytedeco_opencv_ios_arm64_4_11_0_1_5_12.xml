@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.bytedeco:opencv:ios-arm64:4.11.0-1.5.12" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.bytedeco" artifactId="opencv" version="4.11.0-1.5.12" baseVersion="4.11.0-1.5.12" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../packages/gradle/caches/modules-2/files-2.1/org.bytedeco/opencv/4.11.0-1.5.12/8c92d46552da22cfb6fa442062ece6a6251a6f2c/opencv-4.11.0-1.5.12-ios-arm64.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
