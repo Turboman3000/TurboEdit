@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option java_package = "de.turboman.edit.shared.protocol";
-option java_outer_classname = "ProtocolAuth";
-
-message AuthRequest {
-  string password = 10;
-}
