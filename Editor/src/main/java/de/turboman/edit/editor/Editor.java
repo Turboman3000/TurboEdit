@@ -2,7 +2,6 @@ package de.turboman.edit.editor;
 
 import atlantafx.base.theme.PrimerDark;
 import de.turboman.edit.editor.components.MenuBar;
-import de.turboman.edit.editor.panels.TestPanel;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -13,7 +12,7 @@ import java.util.Objects;
 
 public class Editor extends Application {
 
-    public final static String TITLE = "TurboEdit";
+    public final static String TITLE = "TurboEdit 2025";
     public static Image ICON;
 
     public static void main(String[] args) {
@@ -29,7 +28,7 @@ public class Editor extends Application {
 
         box.setFillWidth(true);
         box.getChildren().add(new MenuBar(stage));
-        box.getChildren().add(new TestPanel());
+       // box.getChildren().add(new TestPanel());
 
         stage.setOnCloseRequest(event -> System.exit(0));
 

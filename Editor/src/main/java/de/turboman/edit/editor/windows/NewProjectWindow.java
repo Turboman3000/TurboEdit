@@ -1,6 +1,6 @@
 package de.turboman.edit.editor.windows;
 
-import de.turboman.edit.editor.panels.NewProjectPanel;
+import de.turboman.edit.editor.panes.NewProjectPane;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -24,7 +24,7 @@ public class NewProjectWindow extends Stage {
         setMaxWidth(WIDTH);
         setWidth(WIDTH);
 
-        setScene(new Scene(new NewProjectPanel(this, stage)));
+        setScene(new Scene(new NewProjectPane(this, stage)));
 
         initModality(Modality.APPLICATION_MODAL);
         showAndWait();

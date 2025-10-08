@@ -3,6 +3,8 @@ package de.turboman.edit.editor.components;
 import de.turboman.edit.editor.ProjectManager;
 import de.turboman.edit.editor.windows.AboutWindow;
 import de.turboman.edit.editor.windows.NewProjectWindow;
+import de.turboman.edit.editor.windows.PreferencesWindow;
+import de.turboman.edit.editor.windows.RenderQueueWindow;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
@@ -19,6 +21,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
     public MenuBar(Stage stage) {
         getMenus().add(getMenuFile(stage));
         getMenus().add(getMenuEdit());
+
         getMenus().add(getMenuHelp());
     }
 
@@ -51,8 +54,15 @@ public class MenuBar extends javafx.scene.control.MenuBar {
 
         menu.getItems().add(itemLoadProject);
 
-        var itemQuit = new MenuItem("Quit");
+        var itemPreferences = new MenuItem("Preferences");
+        itemPreferences.setOnAction(event -> new PreferencesWindow());
+        menu.getItems().add(itemPreferences);
 
+        var renderQueueMenu = new MenuItem("Render Queue");
+        renderQueueMenu.setOnAction(event -> new RenderQueueWindow());
+        menu.getItems().add(renderQueueMenu);
+
+        var itemQuit = new MenuItem("Quit");
         itemQuit.setOnAction(event -> System.exit(0));
 
         menu.getItems().add(itemQuit);

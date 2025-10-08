@@ -9,10 +9,9 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 import static de.turboman.edit.renderer.Renderer.WEBSOCKET_PORT;
-import static de.turboman.edit.renderer.websocket.WebsocketAuth.CheckAuthPacket;
 
-public class WebsocketServer extends WebSocketServer {
-    public WebsocketServer() {
+public class RendererServer extends WebSocketServer {
+    public RendererServer() {
         super(new InetSocketAddress(WEBSOCKET_PORT));
     }
 
@@ -39,9 +38,12 @@ public class WebsocketServer extends WebSocketServer {
 
         switch (id) {
             case 0x00 -> { // Auth - Auth
-                if (!CheckAuthPacket(data)) {
+                if (!WebsocketAuth.CheckAuthPacket(data)) {
                     ws.close();
                 }
+            }
+            case 0x01 -> {
+                ws.send(WebsocketQueue.GetQueueInfoData(data));
             }
         }
         System.out.println(Arrays.toString(data));

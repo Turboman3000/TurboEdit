@@ -18,6 +18,8 @@ dependencies {
     implementation("io.github.mkpaz:atlantafx-base:2.1.0")
     implementation("org.msgpack:msgpack-core:0.9.10")
     implementation("org.bytedeco:javacv-platform:1.5.12")
+    implementation("com.google.protobuf:protobuf-java:4.32.1")
+    implementation("org.java-websocket:Java-WebSocket:1.6.0")
 
     implementation(project(":Shared"))
 }

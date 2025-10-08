@@ -1,4 +1,4 @@
-package de.turboman.edit.editor.panels;
+package de.turboman.edit.editor.panes;
 
 import javafx.application.Platform;
 import javafx.scene.image.Image;
@@ -16,8 +16,8 @@ import javax.sound.sampled.SourceDataLine;
 import java.nio.ByteBuffer;
 import java.nio.ShortBuffer;
 
-public class TestPanel extends GridPane {
-    public TestPanel() {
+public class TestPane extends GridPane {
+    public TestPane() {
         var videoPath = "C:\\Users\\legon\\Nextcloud2\\Turboman\\Streams\\01_UNSORTIERT\\2025-09-15 15-14-28.mp4";
         var grabber = new FFmpegFrameGrabber(videoPath);
         var converter = new JavaFXFrameConverter();

@@ -1,4 +1,4 @@
-package de.turboman.edit.editor.panels;
+package de.turboman.edit.editor.panes;
 
 import de.turboman.edit.editor.ProjectManager;
 import de.turboman.edit.shared.project.Project;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import static de.turboman.edit.editor.Editor.TITLE;
 import static de.turboman.edit.editor.ProjectManager.CURRENT_VERSION;
 
-public class NewProjectPanel extends GridPane {
+public class NewProjectPane extends GridPane {
     private String currentBasePath;
     private String currentPath;
     private String currentName;
@@ -31,7 +31,7 @@ public class NewProjectPanel extends GridPane {
     private final TextField pathTextField = new TextField();
     private final Button createButton = new Button("Create");
 
-    public NewProjectPanel(Stage stage, Stage parentStage) {
+    public NewProjectPane(Stage stage, Stage parentStage) {
         currentBasePath = FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
 
         setHgap(10);
