@@ -20,6 +20,7 @@ dependencies {
     implementation("org.bytedeco:javacv-platform:1.5.12")
     implementation("com.google.protobuf:protobuf-java:4.32.1")
     implementation("org.java-websocket:Java-WebSocket:1.6.0")
+    implementation("net.harawata:appdirs:1.4.0")
 
     implementation(project(":Shared"))
 }
@@ -30,7 +31,7 @@ tasks.test {
 
 javafx {
     version = "21"
-    modules("javafx.controls", "javafx.fxml")
+    modules("javafx.controls")
 }
 
 application {
