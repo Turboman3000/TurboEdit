@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option java_package = "de.turboman.edit.shared.protocol";
+option java_package = "org.turbomedia.turboedit.shared.protocol";
 option java_outer_classname = "ProtocolAuth";
 
 message AuthRequest {
