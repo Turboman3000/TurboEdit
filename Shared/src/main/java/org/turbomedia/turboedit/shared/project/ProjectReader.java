@@ -19,13 +19,15 @@ public class ProjectReader {
 
         var files = new ArrayList<ProjectFile>();
 
-        for (var x = 0; x < unpacker.unpackArrayHeader(); x++) {
+        var fileHeader = unpacker.unpackArrayHeader();
+        for (var x = 0; x < fileHeader; x++) {
             files.add(readProjectFile(unpacker));
         }
 
         var timelines = new ArrayList<TimelineData>();
 
-        for (var x = 0; x < unpacker.unpackArrayHeader(); x++) {
+        var timelineHeader = unpacker.unpackArrayHeader();
+        for (var x = 0; x < timelineHeader; x++) {
             timelines.add(readTimelinedata(unpacker));
         }
 
@@ -45,17 +47,19 @@ public class ProjectReader {
         }
 
         var isVideo = unpacker.unpackBoolean();
-        var audio = new ArrayList<AudioObject>();
         int videoHeight = -1;
         int videoWidth = -1;
         int videoFPS = -1;
+        var audio = new ArrayList<AudioObject>();
 
         if (isVideo) {
             videoHeight = unpacker.unpackInt();
             videoWidth = unpacker.unpackInt();
             videoFPS = unpacker.unpackInt();
 
-            for (var x = 0; x < unpacker.unpackArrayHeader(); x++) {
+            var arrayHeader = unpacker.unpackArrayHeader();
+
+            for (var x = 0; x < arrayHeader; x++) {
                 audio.add(readAudioObject(unpacker));
             }
         }
@@ -78,21 +82,22 @@ public class ProjectReader {
     private static TimelineData readTimelinedata(MessageUnpacker unpacker) throws IOException {
         var name = unpacker.unpackString();
         var length = unpacker.unpackLong();
-        var videoLayers = new ArrayList<TimelineLayer>();
 
-        for (var x = 0; x < unpacker.unpackArrayHeader(); x++) {
+        var videoLayers = new ArrayList<TimelineLayer>();
+        var videoLayerHeader = unpacker.unpackArrayHeader();
+        for (var x = 0; x < videoLayerHeader; x++) {
             videoLayers.add(readTimelineLayer(unpacker));
         }
 
         var audioLayers = new ArrayList<TimelineLayer>();
-
-        for (var x = 0; x < unpacker.unpackArrayHeader(); x++) {
+        var audioLayerHeader = unpacker.unpackArrayHeader();
+        for (var x = 0; x < audioLayerHeader; x++) {
             audioLayers.add(readTimelineLayer(unpacker));
         }
 
         var clips = new ArrayList<TimelineClip>();
-
-        for (var x = 0; x < unpacker.unpackArrayHeader(); x++) {
+        var clipsHeader = unpacker.unpackArrayHeader();
+        for (var x = 0; x < clipsHeader; x++) {
             clips.add(readTimelineClip(unpacker));
         }
 
@@ -108,7 +113,7 @@ public class ProjectReader {
 
     private static TimelineClip readTimelineClip(MessageUnpacker unpacker) throws IOException {
         var file = unpacker.unpackInt();
-        var position = unpacker.unpackInt();
+        var position = unpacker.unpackLong();
         var startTime = unpacker.unpackLong();
         var endTime = unpacker.unpackLong();
 

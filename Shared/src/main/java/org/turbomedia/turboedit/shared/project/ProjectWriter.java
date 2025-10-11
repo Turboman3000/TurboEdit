@@ -105,7 +105,7 @@ public class ProjectWriter {
 
     private static void writeTimelineClip(MessagePacker packer, TimelineClip data) throws IOException {
         packer.packInt(data.file());
-        packer.packInt(data.position());
+        packer.packLong(data.position());
         packer.packLong(data.startTime());
         packer.packLong(data.endTime());
     }

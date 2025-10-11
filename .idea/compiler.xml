@@ -2,6 +2,12 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="DemoFileTest" target="21" />
+      <module name="DemoFileTest.main" target="21" />
+      <module name="DemoFileTest.Shared" target="21" />
+      <module name="DemoFileTest.Shared.main" target="21" />
+      <module name="DemoFileTest.Shared.test" target="21" />
+      <module name="DemoFileTest.test" target="21" />
       <module name="Editor" target="21" />
       <module name="Editor.main" target="21" />
       <module name="Editor.Shared" target="21" />

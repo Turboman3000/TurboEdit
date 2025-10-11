@@ -4,6 +4,8 @@ The file is serialized by [MessagePack](https://msgpack.org/) as an array.
 
 The file extension will be `.tvp` (**T**urbo**V**ideo **P**roject).
 
+`int64` = `long` (**NOT** BigInteger)
+
 ## Project
 
 | Name        | Type                            | Notes / Description                                  |
@@ -57,7 +59,7 @@ The file extension will be `.tvp` (**T**urbo**V**ideo **P**roject).
 | Name      | Type  | Notes / Description                              |
 |-----------|-------|--------------------------------------------------|
 | File      | int32 | Index of [ProjectFile](#projectfile) of the clip |
-| Position  | int32 | Position of clip                                 |
+| Position  | int64 | Position of clip                                 |
 | StartTime | int64 | Clip-Relative Start time in milliseconds         |
 | EndTime   | int64 | Clip-Relative End time in milliseconds           |
 

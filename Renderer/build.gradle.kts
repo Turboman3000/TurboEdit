@@ -17,6 +17,8 @@ dependencies {
     implementation("org.slf4j:slf4j-api:2.0.13")
     implementation("ch.qos.logback:logback-classic:1.5.13")
 
+    implementation("net.bramp.ffmpeg:ffmpeg:0.8.0")
+    implementation("commons-cli:commons-cli:1.10.0")
     implementation("com.google.protobuf:protobuf-java:4.32.1")
     implementation("org.java-websocket:Java-WebSocket:1.6.0")
 

@@ -60,5 +60,6 @@ public class RendererServer extends WebSocketServer {
 
     @Override
     public void onStart() {
+        logger.info("WebSocker Server running!");
     }
 }
