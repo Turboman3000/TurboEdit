@@ -44,5 +44,6 @@ public class RenderBuilder {
         return new RenderItem(builder, tempFile.getAbsolutePath());
     }
 
-    public record RenderItem(FFmpegBuilder builder, String tempFilePath) {}
+    public record RenderItem(FFmpegBuilder builder, String tempFilePath) {
+    }
 }
