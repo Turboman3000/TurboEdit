@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class RenderBuilder {
-    private static Logger logger = LoggerFactory.getLogger(RenderBuilder.class);
+    private static final Logger logger = LoggerFactory.getLogger(RenderBuilder.class);
 
     public static RenderItem BuildFfmpeg(Project project, int timelineIndex, FFmpeg ffmpeg, FFprobe ffprobe, String projectPath, String output) throws IOException {
         var basePath = Path.of(projectPath).getParent();
