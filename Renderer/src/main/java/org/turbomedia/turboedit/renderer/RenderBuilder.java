@@ -36,7 +36,7 @@ public class RenderBuilder {
             var thread = new Thread(() -> {
                 var path = Path.of(basePath.toString(), file.path()).normalize().toAbsolutePath().toString();
 
-                if (!(clip.startTime() == 0 && clip.endTime() == 0)) {
+                if (clip.startTime() == 0 && clip.endTime() == 0) {
                     fileContent.add("file '" + path + "'");
                 } else {
                     try {
