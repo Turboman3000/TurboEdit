@@ -36,7 +36,7 @@ public class RenderBuilder {
             var thread = new Thread(() -> {
                 var path = Path.of(basePath.toString(), file.path()).normalize().toAbsolutePath().toString();
 
-                if (clip.startTime() == 0 && clip.endTime() == 0) {
+                if (!(clip.startTime() == 0 && clip.endTime() == 0)) {
                     fileContent.add("file '" + path + "'");
                 } else {
                     try {
@@ -54,9 +54,9 @@ public class RenderBuilder {
 
                         var builder = new FFmpegBuilder()
                                 .setInput(path)
-                                .addOutput(tmpFile.getAbsolutePath())
                                 .setStartOffset(clip.startTime(), TimeUnit.MILLISECONDS)
                                 .addExtraArgs("-sseof", formatDuration(clip.endTime()))
+                                .addOutput(tmpFile.getAbsolutePath())
                                 .setAudioCodec("copy")
                                 .setVideoCodec("copy")
                                 .addExtraArgs("-map", "0")

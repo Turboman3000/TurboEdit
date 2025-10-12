@@ -78,7 +78,7 @@ public class Renderer {
                 }
             });
 
-            thread.setName("Render-1");
+            thread.setName("Render-0");
             thread.setPriority(Thread.MAX_PRIORITY);
             thread.start();
         }
@@ -89,7 +89,7 @@ public class Renderer {
                 server.start();
             });
 
-            thread.setName("WebsocketServer");
+            thread.setName("WebsocketServer-0");
             thread.setPriority(Thread.MIN_PRIORITY);
             thread.start();
         } else {
