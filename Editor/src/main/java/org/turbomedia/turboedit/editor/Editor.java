@@ -2,6 +2,7 @@ package org.turbomedia.turboedit.editor;
 
 import atlantafx.base.theme.PrimerDark;
 import atlantafx.base.theme.PrimerLight;
+import javafx.geometry.Insets;
 import org.turbomedia.turboedit.editor.components.MenuBar;
 import org.turbomedia.turboedit.editor.misc.Locale;
 import org.turbomedia.turboedit.editor.misc.OsColorMode;
@@ -15,6 +16,7 @@ import net.harawata.appdirs.AppDirs;
 import net.harawata.appdirs.AppDirsFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.turbomedia.turboedit.editor.panes.TimelinePanel;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -55,7 +57,12 @@ public class Editor extends Application {
 
         box.setFillWidth(true);
         box.getChildren().add(new MenuBar(stage));
-        // box.getChildren().add(new TestPanel());
+
+        var timeline = new TimelinePanel();
+
+        timeline.setPadding(new Insets(15));
+
+         box.getChildren().add(timeline);
 
         stage.setOnCloseRequest(event -> System.exit(0));
 

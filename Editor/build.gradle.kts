@@ -19,6 +19,9 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.5.13")
 
     implementation("io.github.mkpaz:atlantafx-base:2.1.0")
+    implementation("org.kordamp.ikonli:ikonli-javafx:12.4.0")
+    implementation("org.kordamp.ikonli:ikonli-fluentui-pack:12.4.0")
+
     implementation("org.msgpack:msgpack-core:0.9.10")
     implementation("org.bytedeco:javacv-platform:1.5.12")
     implementation("com.google.protobuf:protobuf-java:4.32.1")

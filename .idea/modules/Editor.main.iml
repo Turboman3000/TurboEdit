@@ -13,6 +13,8 @@
     <orderEntry type="library" name="Gradle: org.java-websocket:Java-WebSocket:1.6.0" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:2.0.15" level="project" />
     <orderEntry type="library" name="Gradle: io.github.mkpaz:atlantafx-base:2.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-javafx:12.4.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-fluentui-pack:12.4.0" level="project" />
     <orderEntry type="library" name="Gradle: org.msgpack:msgpack-core:0.9.10" level="project" />
     <orderEntry type="library" name="Gradle: org.bytedeco:javacv-platform:1.5.12" level="project" />
     <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java:4.32.1" level="project" />
@@ -26,6 +28,7 @@
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-base:23" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-base:win:23" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.5.13" level="project" />
+    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-core:12.4.0" level="project" />
     <orderEntry type="library" name="Gradle: org.bytedeco:javacv:1.5.12" level="project" />
     <orderEntry type="library" name="Gradle: org.bytedeco:opencv-platform:4.11.0-1.5.12" level="project" />
     <orderEntry type="library" name="Gradle: org.bytedeco:openblas-platform:0.3.30-1.5.12" level="project" />
