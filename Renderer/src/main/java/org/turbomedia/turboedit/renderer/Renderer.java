@@ -50,15 +50,25 @@ public class Renderer {
 
                     var ffmpeg = new FFmpeg("ffmpeg");
                     var ffprobe = new FFprobe("ffprobe");
-                    var item = RenderBuilder.BuildFfmpeg(project, projectPath, cmd.getOptionValue("e"));
+                    var item = RenderBuilder.BuildFfmpeg(project, 0, ffmpeg, ffprobe, projectPath, cmd.getOptionValue("e"));
                     var executor = new FFmpegExecutor(ffmpeg, ffprobe);
                     var job = executor.createJob(item.builder(), (progress) -> {
                         if (!progress.isEnd()) return;
 
                         logger.info("Rendering Done!");
 
-                        var tmpFile = new File(item.tempFilePath());
-                        tmpFile.deleteOnExit();
+                        new Thread(() -> {
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+
+                            for (var fi : item.deletions()) {
+                                var file = new File(fi);
+                                file.delete();
+                            }
+                        }).start();
                     });
 
                     logger.info("Rendering Started");

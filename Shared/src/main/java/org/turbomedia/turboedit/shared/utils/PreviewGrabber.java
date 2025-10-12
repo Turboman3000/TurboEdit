@@ -77,7 +77,7 @@ public class PreviewGrabber {
                 .setFrames(1)
                 .done();
 
-        var job = executor.createJob(builder, System.out::println);
+        var job = executor.createJob(builder);
         job.run();
 
         var fileData = FileUtils.readFileToByteArray(tempFile);
