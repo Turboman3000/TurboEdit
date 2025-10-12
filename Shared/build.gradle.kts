@@ -17,6 +17,7 @@ dependencies {
 
     implementation("com.google.protobuf:protobuf-java:4.32.1")
     implementation("org.msgpack:msgpack-core:0.9.10")
+    implementation("net.bramp.ffmpeg:ffmpeg:0.8.0")
 }
 
 tasks.test {

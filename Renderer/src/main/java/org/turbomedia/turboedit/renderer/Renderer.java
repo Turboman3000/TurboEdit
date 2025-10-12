@@ -1,11 +1,15 @@
 package org.turbomedia.turboedit.renderer;
 
+import net.bramp.ffmpeg.FFmpeg;
+import net.bramp.ffmpeg.FFmpegExecutor;
+import net.bramp.ffmpeg.FFprobe;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.turbomedia.turboedit.renderer.websocket.RendererServer;
 import org.turbomedia.turboedit.shared.project.ProjectReader;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Renderer {
@@ -39,10 +43,34 @@ public class Renderer {
         logger.info("Loading Rendering Server...");
 
         if (cmd.hasOption("p")) {
-            var projectPath = cmd.getOptionValue("p");
-            var project = ProjectReader.Read(projectPath);
+            var thread = new Thread(() -> {
+                try {
+                    var projectPath = cmd.getOptionValue("p");
+                    var project = ProjectReader.Read(projectPath);
 
-            RenderBuilder.BuildFfmpeg(project, projectPath, cmd.getOptionValue("e"));
+                    var ffmpeg = new FFmpeg("ffmpeg");
+                    var ffprobe = new FFprobe("ffprobe");
+                    var item = RenderBuilder.BuildFfmpeg(project, projectPath, cmd.getOptionValue("e"));
+                    var executor = new FFmpegExecutor(ffmpeg, ffprobe);
+                    var job = executor.createJob(item.builder(), (progress) -> {
+                        if (!progress.isEnd()) return;
+
+                        logger.info("Rendering Done!");
+
+                        var tmpFile = new File(item.tempFilePath());
+                        tmpFile.deleteOnExit();
+                    });
+
+                    logger.info("Rendering Started");
+                    job.run();
+                } catch (Exception exp) {
+                    logger.error("{} = {}", exp.getClass().getName(), exp.getMessage());
+                }
+            });
+
+            thread.setName("Render-1");
+            thread.setPriority(Thread.MAX_PRIORITY);
+            thread.start();
         }
 
         if (!cmd.hasOption("ns")) {
@@ -51,9 +79,16 @@ public class Renderer {
                 server.start();
             });
 
+            thread.setName("WebsocketServer");
             thread.setPriority(Thread.MIN_PRIORITY);
             thread.start();
         } else {
+            if (!cmd.hasOption("p")) {
+                logger.info("WebSocket Server was disabled, and no Project is specified. Program will be closed!");
+                System.exit(0);
+                return;
+            }
+
             logger.info("WebSocket Server Disabled!");
         }
 
