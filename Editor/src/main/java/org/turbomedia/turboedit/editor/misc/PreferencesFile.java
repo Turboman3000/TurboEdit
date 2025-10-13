@@ -1,6 +1,5 @@
 package org.turbomedia.turboedit.editor.misc;
 
-import org.turbomedia.turboedit.editor.Editor;
 import org.msgpack.core.MessagePack;
 
 import java.io.File;
@@ -99,7 +98,7 @@ public class PreferencesFile {
 
         public void colorMode(int value) throws IOException, InterruptedException {
             colorMode = value;
-            Editor.SetColorMode();
+            StyleManager.UpdateStyle();
             Write();
         }
     }

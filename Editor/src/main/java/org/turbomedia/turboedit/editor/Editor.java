@@ -2,12 +2,8 @@ package org.turbomedia.turboedit.editor;
 
 import atlantafx.base.theme.PrimerDark;
 import atlantafx.base.theme.PrimerLight;
-import javafx.geometry.Insets;
-import org.turbomedia.turboedit.editor.components.MenuBar;
-import org.turbomedia.turboedit.editor.misc.Locale;
-import org.turbomedia.turboedit.editor.misc.OsColorMode;
-import org.turbomedia.turboedit.editor.misc.PreferencesFile;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
@@ -16,6 +12,11 @@ import net.harawata.appdirs.AppDirs;
 import net.harawata.appdirs.AppDirsFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.turbomedia.turboedit.editor.components.MenuBar;
+import org.turbomedia.turboedit.editor.misc.Locale;
+import org.turbomedia.turboedit.editor.misc.OsColorMode;
+import org.turbomedia.turboedit.editor.misc.PreferencesFile;
+import org.turbomedia.turboedit.editor.misc.StyleManager;
 import org.turbomedia.turboedit.editor.panes.TimelinePanel;
 
 import java.io.IOException;
@@ -45,7 +46,7 @@ public class Editor extends Application {
             logger.error(e.getMessage());
         }
 
-        SetColorMode();
+        StyleManager.UpdateStyle();
 
         try {
             new Locale().LoadLocales();
@@ -62,7 +63,7 @@ public class Editor extends Application {
 
         timeline.setPadding(new Insets(15));
 
-         box.getChildren().add(timeline);
+        box.getChildren().add(timeline);
 
         stage.setOnCloseRequest(event -> System.exit(0));
 
@@ -72,23 +73,5 @@ public class Editor extends Application {
         stage.setTitle(TITLE);
         stage.setMaximized(true);
         stage.show();
-    }
-
-    public static void SetColorMode() {
-        var theme = "";
-
-        if (CURRENT_PREFERENCES.colorMode() == 0) {
-            if (OsColorMode.isDarkMode()) {
-                theme = new PrimerDark().getUserAgentStylesheet();
-            } else {
-                theme = new PrimerLight().getUserAgentStylesheet();
-            }
-        } else if (CURRENT_PREFERENCES.colorMode() == 1) {
-            theme = new PrimerDark().getUserAgentStylesheet();
-        } else if (CURRENT_PREFERENCES.colorMode() == 2) {
-            theme = new PrimerLight().getUserAgentStylesheet();
-        }
-
-        Application.setUserAgentStylesheet(theme);
     }
 }
