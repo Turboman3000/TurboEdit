@@ -1,7 +1,5 @@
 package org.turbomedia.turboedit.editor;
 
-import atlantafx.base.theme.PrimerDark;
-import atlantafx.base.theme.PrimerLight;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -14,15 +12,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.turbomedia.turboedit.editor.components.MenuBar;
 import org.turbomedia.turboedit.editor.misc.Locale;
-import org.turbomedia.turboedit.editor.misc.OsColorMode;
 import org.turbomedia.turboedit.editor.misc.PreferencesFile;
 import org.turbomedia.turboedit.editor.misc.StyleManager;
-import org.turbomedia.turboedit.editor.panes.TimelinePanel;
+import org.turbomedia.turboedit.editor.panes.timeline.TimelinePanel;
 
 import java.io.IOException;
 import java.util.Objects;
-
-import static org.turbomedia.turboedit.editor.misc.PreferencesFile.CURRENT_PREFERENCES;
 
 public class Editor extends Application {
     public final static String TITLE = "TurboEdit Alpha 1";
@@ -30,7 +25,7 @@ public class Editor extends Application {
     public final static String APPDATA = APP_DIRS.getUserDataDir("TurboEdit", null, "TurboMedia", true);
     public static Image ICON;
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     public static void main(String[] args) {
         launch(args);
@@ -69,6 +64,8 @@ public class Editor extends Application {
 
         stage.setScene(new Scene(box));
 
+        stage.setMinWidth(640);
+        stage.setMinHeight(480);
         stage.getIcons().add(ICON);
         stage.setTitle(TITLE);
         stage.setMaximized(true);

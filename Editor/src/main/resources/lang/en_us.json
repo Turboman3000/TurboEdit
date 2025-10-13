@@ -5,11 +5,14 @@
   "title.new_project": "New Project",
   "title.preferences": "Preferences",
   "title.render_queue": "Render Queue",
+
   "file_chooser.ext.tvp": "TurboEdit Project File",
+
   "language.en_us": "English (US)",
   "language.de": "German",
   "language.gsw": "Swiss German",
   "language.fr": "French",
+
   "menubar.file": "File",
   "menubar.file.new_project": "New Project",
   "menubar.file.load_project": "Load Project...",
@@ -20,11 +23,13 @@
   "menubar.help": "Help",
   "menubar.help.about": "About %0",
   "menubar.help.repo": "Github Repository",
+
   "new_project.button.create": "Create",
   "new_project.button.close": "Close",
   "new_project.textfield.name.label": "Project Name",
   "new_project.textfield.name.placeholder": "New Project",
   "new_project.textfield.path.label": "Path",
+
   "preferences.appearance.tab": "Appearance",
   "preferences.appearance.choice.language.label": "Language",
   "preferences.appearance.choice.color_mode.label": "Color Mode",
@@ -33,5 +38,14 @@
   "preferences.appearance.choice.color_mode.light": "Light",
   "preferences.rendering.tab": "Rendering",
   "preferences.performance.tab": "Performance",
-  "preferences.social_media.tab": "Social Media"
+  "preferences.social_media.tab": "Social Media",
+
+  "timeline.upper_bar.add.audio": "Add Audio Layer",
+  "timeline.layer.general.lock": "Lock Layer",
+  "timeline.layer.video.visible": "Toggle Layer Visibility",
+  "timeline.layer.audio.edit": "Edit Track",
+  "timeline.layer.audio.mute.enabled": "Mute Track",
+  "timeline.layer.audio.mute.disabled": "Unmute Track",
+  "timeline.layer.audio.solo.enabled": "Solo Track",
+  "timeline.layer.audio.solo.disabled": "Unsolo Track"
 }

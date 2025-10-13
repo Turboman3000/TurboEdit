@@ -4,29 +4,23 @@ import atlantafx.base.theme.PrimerDark;
 import atlantafx.base.theme.PrimerLight;
 import javafx.application.Application;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 import static org.turbomedia.turboedit.editor.misc.PreferencesFile.CURRENT_PREFERENCES;
 
 public class StyleManager {
     public static Theme CURRENT_THEME = Theme.DARK;
 
-    private static final HashMap<Integer, EventFunction> listeners = new HashMap<>();
+    private static final ArrayList<EventFunction> listeners = new ArrayList<>();
 
     public static void ClearAllEvents() {
         listeners.clear();
     }
 
-    public static int RegisterEvent(EventFunction onEvent) {
-        listeners.put(listeners.size(), onEvent);
+    public static void RegisterEvent(EventFunction onEvent) {
+        listeners.add(onEvent);
 
         onEvent.onEvent(CURRENT_THEME);
-
-        return listeners.size() - 1;
-    }
-
-    public static void RemoveEvent(int id) {
-        listeners.remove(id);
     }
 
     public static void UpdateStyle() {
@@ -50,7 +44,7 @@ public class StyleManager {
 
         Application.setUserAgentStylesheet(style);
 
-        for (var listener : listeners.values()) {
+        for (var listener : listeners) {
             listener.onEvent(CURRENT_THEME);
         }
     }
