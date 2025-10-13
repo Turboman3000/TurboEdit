@@ -31,9 +31,9 @@ public class PreferencesPane extends TabPane {
     private Tab appearanceTab() {
         var languageSelection = new ChoiceBox<Language>();
         languageSelection.getItems().add(new Language(GetText("language.en_us"), "en_us"));
-        languageSelection.getItems().add(new Language(GetText("language.de"), "de"));
+      /*  languageSelection.getItems().add(new Language(GetText("language.de"), "de"));
         languageSelection.getItems().add(new Language(GetText("language.gsw"), "gsw"));
-        languageSelection.getItems().add(new Language(GetText("language.fr"), "fr"));
+        languageSelection.getItems().add(new Language(GetText("language.fr"), "fr"));*/
 
         for (var language : languageSelection.getItems()) {
             if (language.value.equals(CURRENT_PREFERENCES.language())) {
