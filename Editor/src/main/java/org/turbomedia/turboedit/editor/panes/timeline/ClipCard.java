@@ -10,21 +10,25 @@ import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.StackPane;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import org.kordamp.ikonli.fluentui.FluentUiFilledAL;
 import org.kordamp.ikonli.fluentui.FluentUiFilledMZ;
 import org.kordamp.ikonli.javafx.FontIcon;
+import org.turbomedia.turboedit.editor.events.ClipSelectedEventData;
+import org.turbomedia.turboedit.editor.events.EventSystem;
+import org.turbomedia.turboedit.editor.events.EventType;
 import org.turbomedia.turboedit.editor.misc.StyleManager;
 
 import java.io.IOException;
+import java.util.UUID;
 
 public class ClipCard extends StackPane {
     private final ContextMenu contextMenu = new ContextMenu();
+    private String clipID = UUID.randomUUID().toString();
+    private boolean isSelected;
 
     public ClipCard(LayerBox.LayerType type) throws IOException {
         contextMenu.setAutoFix(true);
@@ -48,12 +52,39 @@ public class ClipCard extends StackPane {
             }
         }
 
-        var background = new Background(new BackgroundFill(color, new CornerRadii(6), Insets.EMPTY));
+        var radius = new CornerRadii(6);
+        var background = new Background(new BackgroundFill(color, radius, Insets.EMPTY));
+
         setBackground(background);
         setMinWidth(325);
         setPadding(new Insets(2));
         setAlignment(Pos.TOP_LEFT);
         setCursor(Cursor.HAND);
+
+        EventSystem.RegisterListener(EventType.CLIP_SELECTED, (dat) -> {
+            var data = (ClipSelectedEventData) dat;
+
+            if (!data.id().equals(clipID)) {
+                isSelected = false;
+
+                if (getBorder() == null) return;
+                setBorder(null);
+
+                return;
+            }
+
+            if (data.state()) {
+                var border = new Border(new BorderStroke(Color.DODGERBLUE, BorderStrokeStyle.SOLID, radius, BorderStroke.DEFAULT_WIDTHS));
+
+                setBorder(border);
+            } else {
+                if (getBorder() != null) {
+                    setBorder(null);
+                }
+            }
+
+            isSelected = data.state();
+        });
 
         var clipText = new Text("2025-10-11 18-58-52.mp4");
 
@@ -82,6 +113,18 @@ public class ClipCard extends StackPane {
 
         setOnContextMenuRequested((event) -> contextMenu.show(this, event.getSceneX(), event.getScreenY()));
 
+        setOnMouseClicked((event) -> {
+            if (event.getButton() != MouseButton.PRIMARY) {
+                return;
+            }
+
+            isSelected = !isSelected;
+
+            EventSystem.CallEvent(EventType.CLIP_SELECTED, new ClipSelectedEventData(clipID, isSelected));
+
+            contextMenu.hide();
+        });
+
         getChildren().add(clipText);
     }
 
@@ -94,6 +137,7 @@ public class ClipCard extends StackPane {
 
         var pasteClip = new MenuItem("Paste");
         pasteClip.setGraphic(FontIcon.of(FluentUiFilledAL.CLIPBOARD_PASTE_24));
+        pasteClip.setDisable(true);
 
         var deleteClip = new MenuItem("Delete");
         deleteClip.setGraphic(FontIcon.of(FluentUiFilledAL.DELETE_24));

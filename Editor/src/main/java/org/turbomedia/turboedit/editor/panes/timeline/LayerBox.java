@@ -13,6 +13,9 @@ import javafx.scene.text.TextAlignment;
 import org.kordamp.ikonli.fluentui.FluentUiFilledAL;
 import org.kordamp.ikonli.fluentui.FluentUiFilledMZ;
 import org.kordamp.ikonli.javafx.FontIcon;
+import org.turbomedia.turboedit.editor.events.EventSystem;
+import org.turbomedia.turboedit.editor.events.EventType;
+import org.turbomedia.turboedit.editor.events.ThemeChangedEventData;
 import org.turbomedia.turboedit.editor.misc.StyleManager;
 
 import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
@@ -91,8 +94,10 @@ public class LayerBox extends VBox {
         getChildren().add(textBox);
         getChildren().add(buttonBox);
 
-        StyleManager.RegisterEvent((theme) -> {
-            Color color = switch (theme) {
+        EventSystem.RegisterListener(EventType.THEME_CHANGED, (dat) -> {
+            var data = (ThemeChangedEventData) dat;
+
+            Color color = switch (data.theme()) {
                 case DARK -> Color.color(1, 1, 1, 0.05);
                 case LIGHT -> Color.color(0, 0, 0, 0.05);
             };
@@ -101,6 +106,7 @@ public class LayerBox extends VBox {
 
             setBackground(background);
         });
+        StyleManager.CallEvent();
 
         setSpacing(8);
         setPadding(new Insets(8));

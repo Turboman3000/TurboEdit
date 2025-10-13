@@ -3,25 +3,14 @@ package org.turbomedia.turboedit.editor.misc;
 import atlantafx.base.theme.PrimerDark;
 import atlantafx.base.theme.PrimerLight;
 import javafx.application.Application;
-
-import java.util.ArrayList;
+import org.turbomedia.turboedit.editor.events.EventSystem;
+import org.turbomedia.turboedit.editor.events.EventType;
+import org.turbomedia.turboedit.editor.events.ThemeChangedEventData;
 
 import static org.turbomedia.turboedit.editor.misc.PreferencesFile.CURRENT_PREFERENCES;
 
 public class StyleManager {
     public static Theme CURRENT_THEME = Theme.DARK;
-
-    private static final ArrayList<EventFunction> listeners = new ArrayList<>();
-
-    public static void ClearAllEvents() {
-        listeners.clear();
-    }
-
-    public static void RegisterEvent(EventFunction onEvent) {
-        listeners.add(onEvent);
-
-        onEvent.onEvent(CURRENT_THEME);
-    }
 
     public static void UpdateStyle() {
         var style = "";
@@ -43,14 +32,11 @@ public class StyleManager {
         }
 
         Application.setUserAgentStylesheet(style);
-
-        for (var listener : listeners) {
-            listener.onEvent(CURRENT_THEME);
-        }
+        CallEvent();
     }
 
-    public interface EventFunction {
-        void onEvent(Theme theme);
+    public static void CallEvent() {
+        EventSystem.CallEvent(EventType.THEME_CHANGED, new ThemeChangedEventData(CURRENT_THEME));
     }
 
     public enum Theme {
