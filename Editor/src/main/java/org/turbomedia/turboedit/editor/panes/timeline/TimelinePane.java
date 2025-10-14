@@ -1,19 +1,21 @@
 package org.turbomedia.turboedit.editor.panes.timeline;
 
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
+import javafx.geometry.Insets;
+import javafx.scene.layout.*;
 
-public class TimelinePanel extends GridPane {
+public class TimelinePane extends GridPane {
 
-    public TimelinePanel() {
+    public TimelinePane() {
         double GRID_GAP = 6;
 
         var column = new ColumnConstraints();
         column.setHgrow(Priority.ALWAYS);
 
+        var row = new RowConstraints();
+        row.setVgrow(Priority.ALWAYS);
+
         getColumnConstraints().add(column);
+        getRowConstraints().add(row);
 
         add(new UpperBar(), 0, 0, 1, 1);
 
@@ -28,5 +30,6 @@ public class TimelinePanel extends GridPane {
 
         setHgap(GRID_GAP);
         setVgap(GRID_GAP);
+        setPadding(new Insets(15));
     }
 }

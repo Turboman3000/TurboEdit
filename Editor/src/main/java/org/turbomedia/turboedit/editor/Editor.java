@@ -1,10 +1,11 @@
 package org.turbomedia.turboedit.editor;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import net.harawata.appdirs.AppDirs;
 import net.harawata.appdirs.AppDirsFactory;
@@ -14,7 +15,9 @@ import org.turbomedia.turboedit.editor.components.MenuBar;
 import org.turbomedia.turboedit.editor.misc.Locale;
 import org.turbomedia.turboedit.editor.misc.PreferencesFile;
 import org.turbomedia.turboedit.editor.misc.StyleManager;
-import org.turbomedia.turboedit.editor.panes.timeline.TimelinePanel;
+import org.turbomedia.turboedit.editor.panes.file_browser.FileBrowserPane;
+import org.turbomedia.turboedit.editor.panes.player.PlayerPane;
+import org.turbomedia.turboedit.editor.panes.timeline.TimelinePane;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -49,20 +52,26 @@ public class Editor extends Application {
             logger.error("{} = {}", e.getClass().getName(), e.getMessage());
         }
 
-        var box = new VBox();
+        var column = new ColumnConstraints();
+        column.setHgrow(Priority.ALWAYS);
 
-        box.setFillWidth(true);
-        box.getChildren().add(new MenuBar(stage));
+        var grid = new GridPane();
+        grid.getColumnConstraints().add(column);
 
-        var timeline = new TimelinePanel();
+        grid.add(new MenuBar(stage), 0, 0, 2, 1);
 
-        timeline.setPadding(new Insets(15));
+        try {
+            grid.add(new FileBrowserPane(), 0, 1, 1, 1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-        box.getChildren().add(timeline);
+        grid.add(new PlayerPane(), 1, 1, 1, 1);
+        grid.add(new TimelinePane(), 0, 2, 2, 1);
 
         stage.setOnCloseRequest(event -> System.exit(0));
 
-        stage.setScene(new Scene(box));
+        stage.setScene(new Scene(grid));
 
         stage.setMinWidth(640);
         stage.setMinHeight(480);
