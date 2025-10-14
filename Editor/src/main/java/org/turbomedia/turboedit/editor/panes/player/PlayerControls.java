@@ -19,6 +19,8 @@ import org.turbomedia.turboedit.editor.events.ThemeChangedEventData;
 import org.turbomedia.turboedit.editor.misc.StyleManager;
 
 public class PlayerControls extends VBox {
+    private static boolean playbackState;
+
     public PlayerControls() {
         var FONT_NAME = Font.getDefault().getName();
 
@@ -52,14 +54,25 @@ public class PlayerControls extends VBox {
         totalTimestamp.setFont(timestampFont);
 
         var previousButton = new Button();
+        previousButton.setFocusTraversable(false);
         previousButton.setGraphic(new FontIcon(FluentUiFilledMZ.PREVIOUS_24));
         previousButton.setCursor(Cursor.HAND);
 
         var playButton = new Button();
+        playButton.setFocusTraversable(false);
+        playButton.setOnAction((event) -> EventSystem.CallEvent(EventType.PLAYBACK_TOGGLE, null));
+
+        EventSystem.RegisterListener(EventType.PLAYBACK_TOGGLE, (data) -> {
+            playbackState = !playbackState;
+
+            playButton.setGraphic(new FontIcon(playbackState ? FluentUiFilledMZ.PAUSE_24 : FluentUiFilledMZ.PLAY_24));
+        });
+
         playButton.setGraphic(new FontIcon(FluentUiFilledMZ.PLAY_24));
         playButton.setCursor(Cursor.HAND);
 
         var skipButton = new Button();
+        skipButton.setFocusTraversable(false);
         skipButton.setGraphic(new FontIcon(FluentUiFilledMZ.NEXT_24));
         skipButton.setCursor(Cursor.HAND);
 

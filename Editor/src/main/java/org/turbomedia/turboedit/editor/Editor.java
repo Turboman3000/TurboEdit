@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.turbomedia.turboedit.editor.components.MenuBar;
 import org.turbomedia.turboedit.editor.events.EventSystem;
 import org.turbomedia.turboedit.editor.events.EventType;
+import org.turbomedia.turboedit.editor.events.ShortcutHandler;
 import org.turbomedia.turboedit.editor.events.WindowResizeEventData;
 import org.turbomedia.turboedit.editor.misc.Locale;
 import org.turbomedia.turboedit.editor.misc.PreferencesFile;
@@ -72,19 +73,22 @@ public class Editor extends Application {
         grid.add(new PlayerPane(), 1, 1, 1, 1);
         grid.add(new TimelinePane(), 0, 2, 2, 1);
 
-        stage.setOnCloseRequest(event -> System.exit(0));
+        var scene = new Scene(grid);
 
-        stage.setScene(new Scene(grid));
+        ShortcutHandler.RegisterGlobalShortcuts(scene);
 
         stage.setMinWidth(640);
         stage.setMinHeight(480);
         stage.setMaxHeight(Double.MAX_VALUE);
         stage.setMaxWidth(Double.MAX_VALUE);
 
+        stage.setScene(scene);
         stage.getIcons().add(ICON);
         stage.setTitle(TITLE);
         stage.setMaximized(true);
         stage.show();
+
+        stage.setOnCloseRequest(event -> System.exit(0));
 
         stage.widthProperty().addListener(((obs, oldValue, newValue) -> {
             var data = new WindowResizeEventData(

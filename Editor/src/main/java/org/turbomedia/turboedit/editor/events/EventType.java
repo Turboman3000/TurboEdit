@@ -3,5 +3,7 @@ package org.turbomedia.turboedit.editor.events;
 public enum EventType {
     THEME_CHANGED,
     CLIP_SELECTED,
-    WINDOW_RESIZE
+    WINDOW_RESIZE,
+    PLAYBACK_TOGGLE,
+    PLAYBACK_SET_TIME
 }
