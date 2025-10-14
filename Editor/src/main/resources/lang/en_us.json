@@ -5,6 +5,7 @@
   "title.new_project": "New Project",
   "title.preferences": "Preferences",
   "title.render_queue": "Render Queue",
+  "title.error.file.unsupported": "Unsupported File(s)",
 
   "file_chooser.ext.tvp": "TurboEdit Project File",
 
@@ -47,5 +48,8 @@
   "timeline.layer.audio.mute.enabled": "Mute Track",
   "timeline.layer.audio.mute.disabled": "Unmute Track",
   "timeline.layer.audio.solo.enabled": "Solo Track",
-  "timeline.layer.audio.solo.disabled": "Unsolo Track"
+  "timeline.layer.audio.solo.disabled": "Unsolo Track",
+
+  "error.button.close": "Close",
+  "error.file.unsupported": "The following files are not supported."
 }

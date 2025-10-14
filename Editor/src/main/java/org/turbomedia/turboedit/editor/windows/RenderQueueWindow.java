@@ -18,9 +18,10 @@ public class RenderQueueWindow extends Stage {
         setWidth(500);
         setHeight(250);
 
+        centerOnScreen();
         setScene(new Scene(new GridPane()));
 
-        show();
+        showAndWait();
     }
 
 }

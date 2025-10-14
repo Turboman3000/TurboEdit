@@ -25,6 +25,7 @@ public class PreferencesWindow extends Stage {
 
         setScene(new Scene(new PreferencesPane()));
 
+        centerOnScreen();
         initModality(Modality.APPLICATION_MODAL);
         showAndWait();
     }

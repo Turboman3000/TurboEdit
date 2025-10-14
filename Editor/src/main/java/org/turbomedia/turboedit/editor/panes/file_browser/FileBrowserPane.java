@@ -1,14 +1,20 @@
 package org.turbomedia.turboedit.editor.panes.file_browser;
 
 import javafx.geometry.Insets;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import org.turbomedia.turboedit.editor.events.EventSystem;
 import org.turbomedia.turboedit.editor.events.EventType;
 import org.turbomedia.turboedit.editor.events.ThemeChangedEventData;
 import org.turbomedia.turboedit.editor.misc.StyleManager;
+import org.turbomedia.turboedit.editor.windows.errors.FileErrorWindow;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
+
+import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
 
 public class FileBrowserPane extends GridPane {
 
@@ -36,6 +42,35 @@ public class FileBrowserPane extends GridPane {
         });
 
         StyleManager.CallEvent();
+
+        setOnDragOver((event) -> event.acceptTransferModes(TransferMode.LINK));
+        setOnDragDropped((event) -> {
+            var dragboard = event.getDragboard();
+            var unsupportedFiles = new ArrayList<String>();
+
+            for (var file : dragboard.getFiles()) {
+                try {
+                    var mimeType = Files.probeContentType(file.toPath());
+
+                    if (!mimeType.startsWith("video/") && !mimeType.startsWith("audio/")) {
+                        unsupportedFiles.add(file.getAbsolutePath());
+                        continue;
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                System.out.println(file.getAbsoluteFile());
+            }
+
+            if (!unsupportedFiles.isEmpty()) {
+                new FileErrorWindow(
+                        GetText("title.error.file.unsupported"),
+                        GetText("error.file.unsupported"),
+                        unsupportedFiles
+                );
+            }
+        });
 
         flow.getChildren().add(new FileCard());
         flow.setPadding(new Insets(15));

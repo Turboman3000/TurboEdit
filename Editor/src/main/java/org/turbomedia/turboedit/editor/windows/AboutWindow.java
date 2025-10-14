@@ -29,6 +29,7 @@ public class AboutWindow extends Stage {
 
         setScene(new Scene(getPane()));
 
+        centerOnScreen();
         initModality(Modality.APPLICATION_MODAL);
         showAndWait();
     }

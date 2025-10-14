@@ -27,6 +27,7 @@ public class NewProjectWindow extends Stage {
 
         setScene(new Scene(new NewProjectPane(this, stage)));
 
+        centerOnScreen();
         initModality(Modality.APPLICATION_MODAL);
         showAndWait();
     }
