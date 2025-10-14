@@ -1,4 +1,4 @@
 package org.turbomedia.turboedit.editor.events;
 
-public record WindowResizeEventData(double width, double height, double scalePoint) {
+public record WindowResizeEventData(int width, int height, double widthScale, double heightScale) {
 }

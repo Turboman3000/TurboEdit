@@ -8,10 +8,10 @@ import java.io.IOException;
 public class PlayerPane extends VBox {
 
     public PlayerPane() {
-        setSpacing(6);
+        setSpacing(15);
         setMinWidth(1400);
         setMinHeight(800);
-        setPadding(new Insets(15));
+        setPadding(new Insets(15,15,0,15));
 
         try {
             getChildren().add(new PlayerPlayback());

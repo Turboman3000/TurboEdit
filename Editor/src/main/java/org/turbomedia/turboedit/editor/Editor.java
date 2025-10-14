@@ -12,6 +12,9 @@ import net.harawata.appdirs.AppDirsFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.turbomedia.turboedit.editor.components.MenuBar;
+import org.turbomedia.turboedit.editor.events.EventSystem;
+import org.turbomedia.turboedit.editor.events.EventType;
+import org.turbomedia.turboedit.editor.events.WindowResizeEventData;
 import org.turbomedia.turboedit.editor.misc.Locale;
 import org.turbomedia.turboedit.editor.misc.PreferencesFile;
 import org.turbomedia.turboedit.editor.misc.StyleManager;
@@ -75,9 +78,43 @@ public class Editor extends Application {
 
         stage.setMinWidth(640);
         stage.setMinHeight(480);
+        stage.setMaxHeight(Double.MAX_VALUE);
+        stage.setMaxWidth(Double.MAX_VALUE);
+
         stage.getIcons().add(ICON);
         stage.setTitle(TITLE);
         stage.setMaximized(true);
         stage.show();
+
+        stage.widthProperty().addListener(((obs, oldValue, newValue) -> {
+            var data = new WindowResizeEventData(
+                    newValue.intValue(),
+                    (int) stage.getHeight(),
+                    newValue.doubleValue() / 1920,
+                    stage.getHeight() / 1080
+            );
+
+            EventSystem.CallEvent(EventType.WINDOW_RESIZE, data);
+        }));
+
+        stage.heightProperty().addListener(((obs, oldValue, newValue) -> {
+            var data = new WindowResizeEventData(
+                    (int) stage.getWidth(),
+                    newValue.intValue(),
+                    stage.getWidth() / 1920,
+                    newValue.doubleValue() / 1080
+            );
+
+            EventSystem.CallEvent(EventType.WINDOW_RESIZE, data);
+        }));
+
+        var data = new WindowResizeEventData(
+                (int) stage.getWidth(),
+                (int) stage.getHeight(),
+                stage.getWidth() / 1920,
+                stage.getHeight() / 1080
+        );
+
+        EventSystem.CallEvent(EventType.WINDOW_RESIZE, data);
     }
 }

@@ -14,8 +14,13 @@ public class FileBrowserPane extends GridPane {
 
     public FileBrowserPane() throws IOException {
         double GRID_GAP = 6;
+        double width = 1000;
+        double height = 800;
 
         var flow = new FlowPane();
+
+        flow.setMinWidth(width);
+        flow.setMinHeight(height);
 
         EventSystem.RegisterListener(EventType.THEME_CHANGED, (dat) -> {
             var data = (ThemeChangedEventData) dat;
@@ -33,13 +38,11 @@ public class FileBrowserPane extends GridPane {
         StyleManager.CallEvent();
 
         flow.getChildren().add(new FileCard());
-        flow.setMinWidth(1000);
-        flow.setMinHeight(800);
         flow.setPadding(new Insets(15));
         flow.setVgap(GRID_GAP);
         flow.setHgap(GRID_GAP);
 
-        setPadding(new Insets(15,15,0,15));
+        setPadding(new Insets(15, 15, 0, 15));
 
         getChildren().add(flow);
     }
