@@ -48,3 +48,17 @@ application {
 tasks.withType<JavaCompile>().configureEach {
     options.compilerArgs.add("--enable-preview")
 }
+
+distributions {
+    main {
+        distributionBaseName = "TurboEdit-Editor"
+        contents {
+            into("bin/config") {
+                from("config")
+            }
+            into("lib/samples") {
+                from("samples")
+            }
+        }
+    }
+}
