@@ -41,7 +41,7 @@ public class PlayerPlayback extends GridPane {
         EventSystem.RegisterListener(EventType.WINDOW_RESIZE, (dat) -> {
             var data = (WindowResizeEventData) dat;
 
-            view.setFitHeight(546.5 * data.heightScale() - (padding * 2));
+            view.setFitHeight(555 * data.heightScale() - (padding * 2));
 
             clip.setWidth(view.layoutBoundsProperty().get().getWidth());
             clip.setHeight(view.layoutBoundsProperty().get().getHeight());

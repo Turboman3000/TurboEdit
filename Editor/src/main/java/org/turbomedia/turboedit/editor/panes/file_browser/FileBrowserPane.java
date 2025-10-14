@@ -16,11 +16,11 @@ import java.util.ArrayList;
 
 import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
 
-public class FileBrowserPane extends GridPane {
+public class FileBrowserPane extends HBox {
 
     public FileBrowserPane() throws IOException {
         double GRID_GAP = 6;
-        double width = 1000;
+        double width = 1050;
         double height = 800;
 
         var flow = new FlowPane();
@@ -77,8 +77,10 @@ public class FileBrowserPane extends GridPane {
         flow.setVgap(GRID_GAP);
         flow.setHgap(GRID_GAP);
 
-        setPadding(new Insets(15, 15, 0, 15));
+        setPadding(new Insets(15));
+        setSpacing(6);
 
+        getChildren().add(new FileActions());
         getChildren().add(flow);
     }
 }

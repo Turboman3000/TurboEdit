@@ -41,6 +41,17 @@
   "preferences.performance.tab": "Performance",
   "preferences.social_media.tab": "Social Media",
 
+  "file_browser.action.rename": "Rename File",
+  "file_browser.action.delete": "Delete File",
+  "file_browser.action.reload": "Reload files from Disk",
+  "file_browser.action.add_folder": "New Folder",
+  "file_browser.action.add": "Add File",
+  "file_browser.action.sort": "Sort Files",
+  "file_browser.action.sort.name_asc": "File Name Ascending",
+  "file_browser.action.sort.name_desc": "File Name Descending",
+  "file_browser.action.sort.type_asc": "File Type Ascending",
+  "file_browser.action.sort.type_desc": "File Type Descending",
+
   "timeline.upper_bar.add.audio": "Add Audio Layer",
   "timeline.layer.general.lock": "Lock Layer",
   "timeline.layer.video.visible": "Toggle Layer Visibility",
