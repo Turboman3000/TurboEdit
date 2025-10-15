@@ -4,6 +4,7 @@
   "title.about": "About",
   "title.new_project": "New Project",
   "title.preferences": "Preferences",
+  "title.add_render_server": "Add Render Server",
   "title.render_queue": "Render Queue",
   "title.error.file.unsupported": "Unsupported File(s)",
 
@@ -62,5 +63,9 @@
   "timeline.layer.audio.solo.disabled": "Unsolo Track",
 
   "error.button.close": "Close",
-  "error.file.unsupported": "The following files are not supported."
+  "error.file.unsupported": "The following files are not supported.",
+
+  "file_resolve_method.streaming": "Streaming",
+  "file_resolve_method.mapping": "Path Mapping",
+  "file_resolve_method.upload": "Uploading Entirely"
 }

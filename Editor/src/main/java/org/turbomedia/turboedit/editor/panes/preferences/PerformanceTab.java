@@ -8,15 +8,15 @@ import org.slf4j.LoggerFactory;
 
 import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
 
-public class RenderingTab extends Tab {
+public class PerformanceTab extends Tab {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    public RenderingTab() {
+    public PerformanceTab() {
         var box = new VBox();
         box.setPadding(new Insets(10));
         box.setSpacing(10);
 
-        setText(GetText("preferences.rendering.tab"));
+        setText(GetText("preferences.performance.tab"));
         setContent(box);
     }
 }

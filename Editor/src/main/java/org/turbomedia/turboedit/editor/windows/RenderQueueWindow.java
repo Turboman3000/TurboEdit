@@ -1,8 +1,8 @@
 package org.turbomedia.turboedit.editor.windows;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.turbomedia.turboedit.editor.panes.render_queue.RenderQueuePane;
 
 import static org.turbomedia.turboedit.editor.Editor.ICON;
 import static org.turbomedia.turboedit.editor.Editor.TITLE;
@@ -19,7 +19,7 @@ public class RenderQueueWindow extends Stage {
         setHeight(250);
 
         centerOnScreen();
-        setScene(new Scene(new GridPane()));
+        setScene(new Scene(new RenderQueuePane()));
 
         showAndWait();
     }

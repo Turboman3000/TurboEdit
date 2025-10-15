@@ -1,30 +1,23 @@
 package org.turbomedia.turboedit.editor.windows.preferences;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.turbomedia.turboedit.editor.panes.preferences.PreferencesPane;
+import org.turbomedia.turboedit.editor.panes.preferences.AddRenderServerPane;
 
 import static org.turbomedia.turboedit.editor.Editor.ICON;
 import static org.turbomedia.turboedit.editor.Editor.TITLE;
 import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
 
-public class AddServerWindow extends Stage {
-    public AddServerWindow() {
-        setTitle(TITLE + " - " + GetText("title.preferences"));
+public class AddRenderServerWindow extends Stage {
+    public AddRenderServerWindow() {
+        setTitle(TITLE + " - " + GetText("title.add_render_server"));
         getIcons().add(ICON);
+        setWidth(500);
 
-        final int WIDTH = 500;
-        setMinWidth(WIDTH);
-        setWidth(WIDTH);
+        setScene(new Scene(new AddRenderServerPane(this)));
 
-        final int HEIGHT = 400;
-        setMinHeight(HEIGHT);
-        setHeight(HEIGHT);
-
-        setScene(new Scene(new GridPane()));
-
+        setResizable(false);
         centerOnScreen();
         initModality(Modality.APPLICATION_MODAL);
         showAndWait();

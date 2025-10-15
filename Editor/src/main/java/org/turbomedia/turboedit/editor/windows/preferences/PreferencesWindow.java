@@ -1,4 +1,4 @@
-package org.turbomedia.turboedit.editor.windows;
+package org.turbomedia.turboedit.editor.windows.preferences;
 
 import javafx.scene.Scene;
 import javafx.stage.Modality;

@@ -8,18 +8,23 @@
       <module name="DemoFileTest.Shared.main" target="21" />
       <module name="DemoFileTest.Shared.test" target="21" />
       <module name="DemoFileTest.test" target="21" />
+      <module name="editor" target="21" />
       <module name="Editor" target="21" />
-      <module name="Editor.main" target="21" />
-      <module name="Editor.Shared" target="21" />
-      <module name="Editor.Shared.main" target="21" />
-      <module name="Editor.Shared.test" target="21" />
-      <module name="Editor.test" target="21" />
+      <module name="editor.main" target="21" />
+      <module name="editor.renderer" target="21" />
+      <module name="editor.renderer.main" target="21" />
+      <module name="editor.renderer.test" target="21" />
+      <module name="editor.shared" target="21" />
+      <module name="editor.shared.main" target="21" />
+      <module name="editor.shared.test" target="21" />
+      <module name="editor.test" target="21" />
+      <module name="renderer" target="21" />
       <module name="Renderer" target="21" />
-      <module name="Renderer.main" target="21" />
-      <module name="Renderer.Shared" target="21" />
-      <module name="Renderer.Shared.main" target="21" />
-      <module name="Renderer.Shared.test" target="21" />
-      <module name="Renderer.test" target="21" />
+      <module name="renderer.main" target="21" />
+      <module name="renderer.shared" target="21" />
+      <module name="renderer.shared.main" target="21" />
+      <module name="renderer.shared.test" target="21" />
+      <module name="renderer.test" target="21" />
       <module name="Shared" target="21" />
       <module name="Shared.main" target="21" />
       <module name="Shared.test" target="21" />
@@ -28,8 +33,9 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Editor" options="--enable-preview" />
-      <module name="Editor.main" options="--enable-preview" />
-      <module name="Editor.test" options="--enable-preview" />
+      <module name="editor" options="--enable-preview" />
+      <module name="editor.main" options="--enable-preview" />
+      <module name="editor.test" options="--enable-preview" />
     </option>
   </component>
 </project>

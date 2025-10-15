@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "de.turboman.edit"
-version = "1.0-SNAPSHOT"
+version = "alpha-1.0"
 
 repositories {
     mavenCentral()
@@ -22,13 +22,20 @@ dependencies {
     implementation("com.google.protobuf:protobuf-java:4.32.1")
     implementation("org.java-websocket:Java-WebSocket:1.6.0")
 
-    implementation(project(":Shared"))
+    implementation(project(":shared"))
 }
 
 tasks.test {
     useJUnitPlatform()
 }
 
-application {
-    mainClass.set("de.turboman.edit.renderer.Renderer")
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "org.turbomedia.turboedit.renderer.Renderer"
+        attributes["Class-Path"] = configurations.runtimeClasspath.get()
+            .joinToString(separator = " ") { dependencyFile ->
+                "lib/${dependencyFile.name}"
+            }
+
+    }
 }

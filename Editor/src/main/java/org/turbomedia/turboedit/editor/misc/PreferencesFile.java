@@ -1,25 +1,30 @@
 package org.turbomedia.turboedit.editor.misc;
 
 import org.msgpack.core.MessagePack;
+import org.msgpack.core.MessagePacker;
+import org.msgpack.core.MessageUnpacker;
+import org.turbomedia.turboedit.editor.renderer.FileResolveMethod;
+import org.turbomedia.turboedit.editor.renderer.RenderServerEntry;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 import static org.turbomedia.turboedit.editor.Editor.APPDATA;
 
 public class PreferencesFile {
     private static final int CURRENT_FILE_VERSION = 0;
-    private static final String PREFERENCES_PATH = Path.of(APPDATA, "preferences.dat").toString();
+    private static final String PREFERENCES_PATH = Path.of(APPDATA, "preferences").toString();
     public static Preferences CURRENT_PREFERENCES;
 
     public static void Read() throws IOException, InterruptedException {
         var file = new File(PREFERENCES_PATH);
 
         if (!file.exists()) {
-            CURRENT_PREFERENCES = new Preferences(CURRENT_FILE_VERSION, "en_us", 0);
+            CURRENT_PREFERENCES = new Preferences(CURRENT_FILE_VERSION, "en_us", 0, false, new ArrayList<>());
             Write();
             return;
         }
@@ -30,8 +35,11 @@ public class PreferencesFile {
         var fileVersion = unpacker.unpackInt();
         var language = unpacker.unpackString();
         var colorMode = unpacker.unpackInt();
+        var showIPsForServers = unpacker.unpackBoolean();
 
-        CURRENT_PREFERENCES = new Preferences(fileVersion, language, colorMode);
+        var renderServers = unpackRenderServers(unpacker);
+
+        CURRENT_PREFERENCES = new Preferences(fileVersion, language, colorMode, showIPsForServers, renderServers);
     }
 
     public static void Write() throws IOException, InterruptedException {
@@ -62,19 +70,58 @@ public class PreferencesFile {
         packer.packInt(CURRENT_FILE_VERSION); // FILE VERSION
         packer.packString(CURRENT_PREFERENCES.language); // LANGUAGE
         packer.packInt(CURRENT_PREFERENCES.colorMode); // COLOR MODE - 0 = SYSTEM ; 1 = DARK ; 2 = LIGHT
+        packer.packBoolean(CURRENT_PREFERENCES.showIPsForServers); // SHOW IPS FOR SERVER
+        packRenderServers(packer, CURRENT_PREFERENCES.renderServers); // RENDER SERVERS
 
         packer.close();
+    }
+
+    private static ArrayList<RenderServerEntry> unpackRenderServers(MessageUnpacker unpacker) throws IOException {
+        var list = new ArrayList<RenderServerEntry>();
+        var header = unpacker.unpackArrayHeader();
+
+        for (var x = 0; x < header; x++) {
+            var displayName = unpacker.unpackString();
+            var ip = unpacker.unpackString();
+            var fileResolverMethod = unpacker.unpackInt();
+            var defaultServer = unpacker.unpackBoolean();
+
+            list.add(new RenderServerEntry(displayName, ip, FileResolveMethod.values()[fileResolverMethod], defaultServer, false));
+        }
+
+        return list;
+    }
+
+    private static void packRenderServers(MessagePacker packer, ArrayList<RenderServerEntry> entries) throws IOException {
+        packer.packArrayHeader(entries.size());
+
+        for (var entry : entries) {
+            packer.packString(entry.displayName());
+            packer.packString(entry.ip());
+            packer.packInt(entry.fileResolveMethod().ordinal());
+            packer.packBoolean(entry.defaultServer());
+        }
     }
 
     public static final class Preferences {
         private final int fileVersion;
         public String language;
         public int colorMode;
+        public boolean showIPsForServers;
+        public ArrayList<RenderServerEntry> renderServers;
 
-        public Preferences(int fileVersion, String language, int colorMode) {
+        public Preferences(
+                int fileVersion,
+                String language,
+                int colorMode,
+                boolean showIPsForServers,
+                ArrayList<RenderServerEntry> renderServers
+        ) {
             this.fileVersion = fileVersion;
             this.language = language;
             this.colorMode = colorMode;
+            this.showIPsForServers = showIPsForServers;
+            this.renderServers = renderServers;
         }
 
         public int fileVersion() {
@@ -99,6 +146,21 @@ public class PreferencesFile {
         public void colorMode(int value) throws IOException, InterruptedException {
             colorMode = value;
             StyleManager.UpdateStyle();
+            Write();
+        }
+
+        public void showIPsForServers(boolean value) throws IOException, InterruptedException {
+            showIPsForServers = value;
+            Write();
+        }
+
+        public void addRenderServers(RenderServerEntry entry) throws IOException, InterruptedException {
+            renderServers.add(entry);
+            Write();
+        }
+
+        public void removeRenderServers(int index) throws IOException, InterruptedException {
+            renderServers.remove(index);
             Write();
         }
     }

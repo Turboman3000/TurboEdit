@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="Editor:test" external.linked.project.path="$MODULE_DIR$/../../Editor" external.root.project.path="$MODULE_DIR$/../../Editor" external.system.id="GRADLE" external.system.module.group="org.turbomedia.turboedit" external.system.module.type="sourceSet" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="editor:test" external.linked.project.path="$MODULE_DIR$/../../Editor" external.root.project.path="$MODULE_DIR$/../../Editor" external.system.id="GRADLE" external.system.module.group="org.turbomedia.turboedit" external.system.module.type="sourceSet" external.system.module.version="alpha-1.0" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager">
     <output-test url="file://$MODULE_DIR$/../../Editor/build/classes/java/test" />
     <exclude-output />
@@ -9,7 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="Editor.main" />
+    <orderEntry type="module" module-name="editor.main" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-classic:1.5.13" level="project" />
     <orderEntry type="library" name="Gradle: org.java-websocket:Java-WebSocket:1.6.0" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:2.0.15" level="project" />
@@ -19,9 +19,11 @@
     <orderEntry type="library" name="Gradle: org.msgpack:msgpack-core:0.9.10" level="project" />
     <orderEntry type="library" name="Gradle: org.bytedeco:javacv-platform:1.5.12" level="project" />
     <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java:4.32.1" level="project" />
+    <orderEntry type="library" name="Gradle: commons-cli:commons-cli:1.10.0" level="project" />
     <orderEntry type="library" name="Gradle: net.harawata:appdirs:1.4.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.13.2" level="project" />
-    <orderEntry type="module" module-name="Editor.Shared.main" />
+    <orderEntry type="module" module-name="editor.shared.main" />
+    <orderEntry type="module" module-name="editor.renderer.main" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:23" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:win:23" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-graphics:23" level="project" />
@@ -184,5 +186,5 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.google.code.findbugs:jsr305:3.0.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.checkerframework:checker-qual:3.37.0" level="project" />
   </component>
-  <component name="TestModuleProperties" production-module="Editor.main" />
+  <component name="TestModuleProperties" production-module="editor.main" />
 </module>

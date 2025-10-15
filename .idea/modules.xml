@@ -2,22 +2,25 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Editor.iml" filepath="$PROJECT_DIR$/Editor.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/Editor.Shared.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/Editor.Shared.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/Editor.Shared.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/Editor.Shared.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/Editor.Shared.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/Editor.Shared.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Editor.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Editor.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Editor.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Editor.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Renderer.iml" filepath="$PROJECT_DIR$/Renderer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/Renderer.Shared.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/Renderer.Shared.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/Renderer.Shared.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/Renderer.Shared.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/Renderer.Shared.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/Renderer.Shared.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Renderer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Renderer.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Renderer.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Renderer.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/Shared.iml" filepath="$PROJECT_DIR$/Shared.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Shared.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Shared.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Shared.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Shared.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/TurboEdit.iml" filepath="$PROJECT_DIR$/TurboEdit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/editor.iml" filepath="$PROJECT_DIR$/.idea/modules/editor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/editor.main.iml" filepath="$PROJECT_DIR$/.idea/modules/editor.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-709047753/editor.renderer.iml" filepath="$PROJECT_DIR$/.idea/modules/-709047753/editor.renderer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-709047753/editor.renderer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-709047753/editor.renderer.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-709047753/editor.renderer.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-709047753/editor.renderer.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/editor.shared.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/editor.shared.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/editor.shared.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/editor.shared.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/editor.shared.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/editor.shared.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/editor.test.iml" filepath="$PROJECT_DIR$/.idea/modules/editor.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/renderer.iml" filepath="$PROJECT_DIR$/.idea/modules/renderer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/renderer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/renderer.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/renderer.shared.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/renderer.shared.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/renderer.shared.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/renderer.shared.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/renderer.shared.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/renderer.shared.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/renderer.test.iml" filepath="$PROJECT_DIR$/.idea/modules/renderer.test.iml" />
     </modules>
   </component>
 </project>

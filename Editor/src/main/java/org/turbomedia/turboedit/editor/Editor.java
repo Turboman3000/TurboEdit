@@ -22,6 +22,7 @@ import org.turbomedia.turboedit.editor.misc.StyleManager;
 import org.turbomedia.turboedit.editor.panes.file_browser.FileBrowserPane;
 import org.turbomedia.turboedit.editor.panes.player.PlayerPane;
 import org.turbomedia.turboedit.editor.panes.timeline.TimelinePane;
+import org.turbomedia.turboedit.renderer.Renderer;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -31,6 +32,8 @@ public class Editor extends Application {
     public final static AppDirs APP_DIRS = AppDirsFactory.getInstance();
     public final static String APPDATA = APP_DIRS.getUserDataDir("TurboEdit", null, "TurboMedia", true);
     public static Image ICON;
+
+    public static Thread renderServerThread;
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -47,6 +50,17 @@ public class Editor extends Application {
         } catch (IOException | InterruptedException e) {
             logger.error(e.getMessage());
         }
+
+        renderServerThread = new Thread(() -> {
+            try {
+                Renderer.main(new String[]{});
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        renderServerThread.setName("RenderServer");
+        renderServerThread.start();
 
         StyleManager.UpdateStyle();
 
@@ -87,6 +101,7 @@ public class Editor extends Application {
         stage.setTitle(TITLE);
         stage.setMaximized(true);
         stage.show();
+        stage.requestFocus();
 
         stage.setOnCloseRequest(event -> System.exit(0));
 

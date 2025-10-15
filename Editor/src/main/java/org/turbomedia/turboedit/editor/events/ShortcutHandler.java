@@ -3,7 +3,7 @@ package org.turbomedia.turboedit.editor.events;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import org.turbomedia.turboedit.editor.windows.PreferencesWindow;
+import org.turbomedia.turboedit.editor.windows.preferences.PreferencesWindow;
 import org.turbomedia.turboedit.editor.windows.RenderQueueWindow;
 
 public class ShortcutHandler {

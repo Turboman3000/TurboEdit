@@ -3,7 +3,7 @@ package org.turbomedia.turboedit.editor.components;
 import org.turbomedia.turboedit.editor.ProjectManager;
 import org.turbomedia.turboedit.editor.windows.AboutWindow;
 import org.turbomedia.turboedit.editor.windows.NewProjectWindow;
-import org.turbomedia.turboedit.editor.windows.PreferencesWindow;
+import org.turbomedia.turboedit.editor.windows.preferences.PreferencesWindow;
 import org.turbomedia.turboedit.editor.windows.RenderQueueWindow;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;

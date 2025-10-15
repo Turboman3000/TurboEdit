@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "de.turboman.edit"
-version = "1.0-SNAPSHOT"
+version = "alpha-1.0"
 
 repositories {
     gradlePluginPortal()

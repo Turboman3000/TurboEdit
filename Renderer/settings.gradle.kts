@@ -1,4 +1,4 @@
-rootProject.name = "Renderer"
+rootProject.name = "renderer"
 
-include(":Shared")
-project(":Shared").projectDir = File("../Shared")
+include(":shared")
+project(":shared").projectDir = File("../Shared")
