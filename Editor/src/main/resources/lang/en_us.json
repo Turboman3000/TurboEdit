@@ -5,6 +5,7 @@
   "title.new_project": "New Project",
   "title.preferences": "Preferences",
   "title.add_render_server": "Add Render Server",
+  "title.edit_render_server": "Edit Render Server",
   "title.render_queue": "Render Queue",
   "title.error.file.unsupported": "Unsupported File(s)",
 
@@ -38,8 +39,16 @@
   "preferences.appearance.choice.color_mode.system": "Follow System",
   "preferences.appearance.choice.color_mode.dark": "Dark",
   "preferences.appearance.choice.color_mode.light": "Light",
+
   "preferences.rendering.tab": "Rendering",
+  "preferences.rendering.title.render_servers": "Rendering",
+  "preferences.rendering.button.edit": "Edit",
+  "preferences.rendering.button.add": "Add",
+  "preferences.rendering.button.delete": "Delete",
+  "preferences.rendering.button.show_ips": "Show IPs?",
+
   "preferences.performance.tab": "Performance",
+
   "preferences.social_media.tab": "Social Media",
 
   "file_browser.action.rename": "Rename File",
@@ -67,5 +76,18 @@
 
   "file_resolve_method.streaming": "Streaming",
   "file_resolve_method.mapping": "Path Mapping",
-  "file_resolve_method.upload": "Uploading Entirely"
+  "file_resolve_method.upload": "Uploading Entirely",
+
+  "render_server_entry.default": "DEFAULT",
+  "render_server_entry.build_in": "BUILD-IN",
+
+  "edit_render_server.display_name": "Server Display Name",
+  "edit_render_server.ip": "Server IP",
+  "edit_render_server.file_resolve": "File Resolving Method",
+  "edit_render_server.default_server": "Default Server?",
+  "edit_render_server.button.edit": "Edit",
+  "edit_render_server.button.add": "Add",
+  "edit_render_server.button.close": "Close",
+  "edit_render_server.error.no_display_name.title": "Error",
+  "edit_render_server.error.no_display_name": "Server name can't be blank!"
 }

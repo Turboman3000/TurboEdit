@@ -15,46 +15,58 @@ import org.turbomedia.turboedit.editor.windows.SimpleMessageBox;
 
 import java.io.IOException;
 
-public class AddRenderServerPane extends VBox {
-    public AddRenderServerPane(Stage stage) {
+import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
+
+public class EditRenderServerPane extends VBox {
+    public EditRenderServerPane(Stage stage, RenderServerEntry entry) {
         setPadding(new Insets(15));
         setSpacing(6);
 
-        var serverNameLabel = new Label("Server Display Name");
-        var serverNameInput = new TextField();
+        var alreadyExists = PreferencesFile.CURRENT_PREFERENCES.renderServers.contains(entry);
+
+        var serverNameLabel = new Label(GetText("edit_render_server.display_name"));
+        var serverNameInput = new TextField(entry.displayName());
         serverNameLabel.setLabelFor(serverNameInput);
+        serverNameInput.setDisable(entry.buildIn());
 
-        var serverIPLabel = new Label("Server IP");
-        var serverIPInput = new TextField("127.0.0.1");
+        var serverIPLabel = new Label(GetText("edit_render_server.ip"));
+        var serverIPInput = new TextField(entry.ip());
         serverIPLabel.setLabelFor(serverIPInput);
+        serverIPInput.setDisable(entry.buildIn());
 
-        var fileModeLabel = new Label("File Resolving Method");
+        var fileModeLabel = new Label(GetText("edit_render_server.file_resolve"));
         var fileModeBox = new ComboBox<FileResolveMethod>();
 
         for (var item : FileResolveMethod.values()) {
             fileModeBox.getItems().add(item);
         }
 
-        fileModeBox.setValue(FileResolveMethod.STREAMING);
+        fileModeBox.setDisable(entry.buildIn());
+        fileModeBox.setValue(entry.fileResolveMethod());
         fileModeBox.setMaxWidth(Double.MAX_VALUE);
         fileModeBox.setCursor(Cursor.HAND);
         fileModeLabel.setLabelFor(fileModeBox);
 
-        var defaultCheckbox = new CheckBox("Default Server");
+        var defaultCheckbox = new CheckBox(GetText("edit_render_server.default_server"));
         defaultCheckbox.setCursor(Cursor.HAND);
+        defaultCheckbox.setSelected(entry.defaultServer());
 
-        var addButton = new Button("Add");
+        var addButton = new Button(GetText("edit_render_server.button." + (alreadyExists ? "edit" : "add")));
         addButton.setCursor(Cursor.HAND);
         addButton.setOnAction((event) -> {
             if (serverNameInput.getText().isBlank()) {
-                new SimpleMessageBox("Error", "Server name can't be blank!");
+                new SimpleMessageBox(GetText("edit_render_server.error.no_display_name.title"), GetText("edit_render_server.error.no_display_name"));
                 return;
             }
 
-            var entry = new RenderServerEntry(serverNameInput.getText(), serverIPInput.getText(), fileModeBox.getValue(), defaultCheckbox.isSelected(), false);
+            var newEntry = new RenderServerEntry(serverNameInput.getText(), serverIPInput.getText(), fileModeBox.getValue(), defaultCheckbox.isSelected(), false);
 
             try {
-                PreferencesFile.CURRENT_PREFERENCES.addRenderServers(entry);
+                if (alreadyExists) {
+                    PreferencesFile.CURRENT_PREFERENCES.removeRenderServers(entry);
+                }
+
+                PreferencesFile.CURRENT_PREFERENCES.addRenderServers(newEntry);
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -62,7 +74,7 @@ public class AddRenderServerPane extends VBox {
             stage.close();
         });
 
-        var closeButton = new Button("Close");
+        var closeButton = new Button(GetText("edit_render_server.button.close"));
         closeButton.setCursor(Cursor.HAND);
         closeButton.setOnAction((event) -> stage.close());
 

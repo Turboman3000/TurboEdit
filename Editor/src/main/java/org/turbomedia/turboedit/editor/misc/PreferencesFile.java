@@ -172,6 +172,10 @@ public class PreferencesFile {
         }
 
         public void removeRenderServers(RenderServerEntry entry) throws IOException, InterruptedException {
+            if (entry.defaultServer()) {
+                renderServers.getFirst().defaultServer(true);
+            }
+
             renderServers.remove(entry);
             Write();
         }

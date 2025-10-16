@@ -20,13 +20,13 @@ import org.slf4j.LoggerFactory;
 import org.turbomedia.turboedit.editor.misc.PreferencesFile;
 import org.turbomedia.turboedit.editor.renderer.RenderServerEntry;
 import org.turbomedia.turboedit.editor.windows.preferences.AddRenderServerWindow;
+import org.turbomedia.turboedit.editor.windows.preferences.EditRenderServerWindow;
 
 import java.io.IOException;
 
 import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
 
 public class RenderingTab extends Tab {
-    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     public RenderingTab() {
         var FONT_NAME = Font.getDefault().getName();
@@ -36,24 +36,24 @@ public class RenderingTab extends Tab {
         box.setSpacing(10);
 
         {
-            var headerText = new Text("Render Servers");
+            var headerText = new Text(GetText("preferences.rendering.title.render_servers"));
             headerText.setFont(Font.font(FONT_NAME, FontWeight.BOLD, 14));
-
-            var deleteButton = new Button("Delete");
-            deleteButton.setCursor(Cursor.HAND);
-            deleteButton.setDisable(true);
-            deleteButton.setGraphic(FontIcon.of(FluentUiFilledAL.DELETE_24));
-
-            var editButton = new Button("Edit");
-            editButton.setCursor(Cursor.HAND);
-            editButton.setDisable(true);
-            editButton.setGraphic(FontIcon.of(FluentUiFilledAL.EDIT_24));
 
             var serverList = new ListView<RenderServerEntry>();
 
             serverList.getItems().addAll(PreferencesFile.CURRENT_PREFERENCES.renderServers);
 
-            var newButton = new Button("Add");
+            var editButton = new Button(GetText("preferences.rendering.button.edit"));
+            editButton.setCursor(Cursor.HAND);
+            editButton.setDisable(true);
+            editButton.setGraphic(FontIcon.of(FluentUiFilledAL.EDIT_24));
+            editButton.setOnAction((event) -> {
+                var selected = serverList.getSelectionModel().getSelectedItems().getFirst();
+
+                new EditRenderServerWindow(selected);
+            });
+
+            var newButton = new Button(GetText("preferences.rendering.button.add"));
             newButton.setCursor(Cursor.HAND);
             newButton.setGraphic(FontIcon.of(FluentUiFilledAL.ADD_24));
             newButton.setOnAction((event) -> {
@@ -69,6 +69,11 @@ public class RenderingTab extends Tab {
                     serverList.getItems().addAll(PreferencesFile.CURRENT_PREFERENCES.renderServers);
                 });
             });
+
+            var deleteButton = new Button(GetText("preferences.rendering.button.delete"));
+            deleteButton.setCursor(Cursor.HAND);
+            deleteButton.setDisable(true);
+            deleteButton.setGraphic(FontIcon.of(FluentUiFilledAL.DELETE_24));
 
             serverList.setOnMouseClicked((event) -> {
                 var items = serverList.getSelectionModel().getSelectedItems();
@@ -103,7 +108,7 @@ public class RenderingTab extends Tab {
                 serverList.refresh();
             });
 
-            var showIPsCheckbox = new CheckBox("Show IPs");
+            var showIPsCheckbox = new CheckBox(GetText("preferences.rendering.button.show_ips"));
             showIPsCheckbox.setCursor(Cursor.HAND);
             showIPsCheckbox.setSelected(PreferencesFile.CURRENT_PREFERENCES.showIPsForServers);
             showIPsCheckbox.setOnAction((event) -> {

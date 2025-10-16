@@ -2,6 +2,8 @@ package org.turbomedia.turboedit.editor.renderer;
 
 import org.turbomedia.turboedit.editor.misc.PreferencesFile;
 
+import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
+
 public final class RenderServerEntry {
     private String displayName;
     private String ip;
@@ -19,7 +21,7 @@ public final class RenderServerEntry {
 
     @Override
     public String toString() {
-        return displayName + (PreferencesFile.CURRENT_PREFERENCES.showIPsForServers ? " [" + ip + "]" : "") + (buildIn ? " [BUILD-IN]" : "") + (defaultServer ? " [DEFAULT]" : "");
+        return displayName + (PreferencesFile.CURRENT_PREFERENCES.showIPsForServers ? " [" + ip + "]" : "") + (buildIn ? " [" + GetText("render_server_entry.build_in") + "]" : "") + (defaultServer ? " [" + GetText("render_server_entry.default") + "]" : "");
     }
 
     public String displayName() {
