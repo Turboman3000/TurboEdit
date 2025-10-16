@@ -12,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.turbomedia.turboedit.editor.Editor.APPDATA;
 
@@ -24,8 +25,11 @@ public class PreferencesFile {
         var file = new File(PREFERENCES_PATH);
 
         if (!file.exists()) {
-            CURRENT_PREFERENCES = new Preferences(CURRENT_FILE_VERSION, "en_us", 0, false, new ArrayList<>());
+            var buildInServer = new RenderServerEntry("Build-In", "127.0.0.1", FileResolveMethod.MAPPING, true, true);
+
+            CURRENT_PREFERENCES = new Preferences(CURRENT_FILE_VERSION, "en_us", 0, false, List.of(buildInServer));
             Write();
+
             return;
         }
 
@@ -76,7 +80,7 @@ public class PreferencesFile {
         packer.close();
     }
 
-    private static ArrayList<RenderServerEntry> unpackRenderServers(MessageUnpacker unpacker) throws IOException {
+    private static List<RenderServerEntry> unpackRenderServers(MessageUnpacker unpacker) throws IOException {
         var list = new ArrayList<RenderServerEntry>();
         var header = unpacker.unpackArrayHeader();
 
@@ -85,14 +89,15 @@ public class PreferencesFile {
             var ip = unpacker.unpackString();
             var fileResolverMethod = unpacker.unpackInt();
             var defaultServer = unpacker.unpackBoolean();
+            var buildIn = unpacker.unpackBoolean();
 
-            list.add(new RenderServerEntry(displayName, ip, FileResolveMethod.values()[fileResolverMethod], defaultServer, false));
+            list.add(new RenderServerEntry(displayName, ip, FileResolveMethod.values()[fileResolverMethod], defaultServer, buildIn));
         }
 
         return list;
     }
 
-    private static void packRenderServers(MessagePacker packer, ArrayList<RenderServerEntry> entries) throws IOException {
+    private static void packRenderServers(MessagePacker packer, List<RenderServerEntry> entries) throws IOException {
         packer.packArrayHeader(entries.size());
 
         for (var entry : entries) {
@@ -100,6 +105,7 @@ public class PreferencesFile {
             packer.packString(entry.ip());
             packer.packInt(entry.fileResolveMethod().ordinal());
             packer.packBoolean(entry.defaultServer());
+            packer.packBoolean(entry.buildIn());
         }
     }
 
@@ -108,14 +114,14 @@ public class PreferencesFile {
         public String language;
         public int colorMode;
         public boolean showIPsForServers;
-        public ArrayList<RenderServerEntry> renderServers;
+        public List<RenderServerEntry> renderServers;
 
         public Preferences(
                 int fileVersion,
                 String language,
                 int colorMode,
                 boolean showIPsForServers,
-                ArrayList<RenderServerEntry> renderServers
+                List<RenderServerEntry> renderServers
         ) {
             this.fileVersion = fileVersion;
             this.language = language;
@@ -155,12 +161,18 @@ public class PreferencesFile {
         }
 
         public void addRenderServers(RenderServerEntry entry) throws IOException, InterruptedException {
+            if (entry.defaultServer()) {
+                for (var serverEntry : renderServers) {
+                    serverEntry.defaultServer(false);
+                }
+            }
+
             renderServers.add(entry);
             Write();
         }
 
-        public void removeRenderServers(int index) throws IOException, InterruptedException {
-            renderServers.remove(index);
+        public void removeRenderServers(RenderServerEntry entry) throws IOException, InterruptedException {
+            renderServers.remove(entry);
             Write();
         }
     }

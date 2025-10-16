@@ -32,8 +32,7 @@ public class Editor extends Application {
     public final static AppDirs APP_DIRS = AppDirsFactory.getInstance();
     public final static String APPDATA = APP_DIRS.getUserDataDir("TurboEdit", null, "TurboMedia", true);
     public static Image ICON;
-
-    public static Thread renderServerThread;
+    public static Thread RENDER_SERVER_THREAD;
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -51,16 +50,14 @@ public class Editor extends Application {
             logger.error(e.getMessage());
         }
 
-        renderServerThread = new Thread(() -> {
+        RENDER_SERVER_THREAD = new Thread(() -> {
             try {
                 Renderer.main(new String[]{});
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-        });
-
-        renderServerThread.setName("RenderServer");
-        renderServerThread.start();
+        }, "RenderServer | Build-In");
+        RENDER_SERVER_THREAD.start();
 
         StyleManager.UpdateStyle();
 

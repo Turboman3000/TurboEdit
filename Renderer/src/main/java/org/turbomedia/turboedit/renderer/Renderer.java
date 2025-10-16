@@ -87,9 +87,8 @@ public class Renderer {
             var thread = new Thread(() -> {
                 var server = new RendererServer();
                 server.start();
-            });
+            }, "WebsocketServer-0");
 
-            thread.setName("WebsocketServer-0");
             thread.setPriority(Thread.MIN_PRIORITY);
             thread.start();
         } else {

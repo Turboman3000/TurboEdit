@@ -18,7 +18,6 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.turbomedia.turboedit.editor.misc.PreferencesFile;
-import org.turbomedia.turboedit.editor.renderer.FileResolveMethod;
 import org.turbomedia.turboedit.editor.renderer.RenderServerEntry;
 import org.turbomedia.turboedit.editor.windows.preferences.AddRenderServerWindow;
 
@@ -52,7 +51,6 @@ public class RenderingTab extends Tab {
 
             var serverList = new ListView<RenderServerEntry>();
 
-            serverList.getItems().add(new RenderServerEntry("Build-In", "127.0.0.1", FileResolveMethod.MAPPING, true, true));
             serverList.getItems().addAll(PreferencesFile.CURRENT_PREFERENCES.renderServers);
 
             var newButton = new Button("Add");
@@ -65,8 +63,6 @@ public class RenderingTab extends Tab {
                     var size = serverList.getItems().size();
 
                     for (var x = 0; x < size; x++) {
-                        if (serverList.getItems().get(x).buildIn()) continue;
-
                         serverList.getItems().remove(x);
                     }
 
@@ -75,12 +71,36 @@ public class RenderingTab extends Tab {
             });
 
             serverList.setOnMouseClicked((event) -> {
-                var selected = serverList.getSelectionModel().getSelectedItems().getFirst();
+                var items = serverList.getSelectionModel().getSelectedItems();
 
-                if (selected == null) return;
+                if (items.isEmpty()) return;
+
+                var selected = items.getFirst();
 
                 editButton.setDisable(false);
                 deleteButton.setDisable(selected.buildIn());
+            });
+
+            deleteButton.setOnAction((e) -> {
+                var size = serverList.getItems().size();
+
+                for (var x = 0; x < size; x++) {
+                    var item = serverList.getItems().get(x);
+                    var selected = serverList.getSelectionModel().getSelectedItems().getFirst();
+
+                    if (selected == item) {
+                        serverList.getItems().remove(x);
+
+                        try {
+                            PreferencesFile.CURRENT_PREFERENCES.removeRenderServers(selected);
+                        } catch (IOException | InterruptedException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        break;
+                    }
+                }
+
+                serverList.refresh();
             });
 
             var showIPsCheckbox = new CheckBox("Show IPs");
