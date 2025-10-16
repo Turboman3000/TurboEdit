@@ -5,6 +5,7 @@ import org.msgpack.core.MessagePacker;
 import org.msgpack.core.MessageUnpacker;
 import org.turbomedia.turboedit.editor.renderer.FileResolveMethod;
 import org.turbomedia.turboedit.editor.renderer.RenderServerEntry;
+import org.turbomedia.turboedit.editor.renderer.RendererClient;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static org.turbomedia.turboedit.editor.Editor.APPDATA;
 
@@ -25,7 +27,7 @@ public class PreferencesFile {
         var file = new File(PREFERENCES_PATH);
 
         if (!file.exists()) {
-            var buildInServer = new RenderServerEntry("Build-In", "127.0.0.1", FileResolveMethod.MAPPING, true, true);
+            var buildInServer = new RenderServerEntry(UUID.randomUUID().toString(), "Build-In", "127.0.0.1", FileResolveMethod.MAPPING, true, true);
 
             CURRENT_PREFERENCES = new Preferences(CURRENT_FILE_VERSION, "en_us", 0, false, List.of(buildInServer));
             Write();
@@ -85,13 +87,14 @@ public class PreferencesFile {
         var header = unpacker.unpackArrayHeader();
 
         for (var x = 0; x < header; x++) {
+            var id = unpacker.unpackString();
             var displayName = unpacker.unpackString();
             var ip = unpacker.unpackString();
             var fileResolverMethod = unpacker.unpackInt();
             var defaultServer = unpacker.unpackBoolean();
             var buildIn = unpacker.unpackBoolean();
 
-            list.add(new RenderServerEntry(displayName, ip, FileResolveMethod.values()[fileResolverMethod], defaultServer, buildIn));
+            list.add(new RenderServerEntry(id, displayName, ip, FileResolveMethod.values()[fileResolverMethod], defaultServer, buildIn));
         }
 
         return list;
@@ -101,8 +104,15 @@ public class PreferencesFile {
         packer.packArrayHeader(entries.size());
 
         for (var entry : entries) {
+            packer.packString(entry.id());
             packer.packString(entry.displayName());
-            packer.packString(entry.ip());
+
+            if (entry.ip().split(":").length != 2) {
+                packer.packString(entry.ip() + ":" + RendererClient.DEFAULT_PORT);
+            } else {
+                packer.packString(entry.ip());
+            }
+
             packer.packInt(entry.fileResolveMethod().ordinal());
             packer.packBoolean(entry.defaultServer());
             packer.packBoolean(entry.buildIn());

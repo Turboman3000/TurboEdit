@@ -17,7 +17,7 @@ public class AddRenderServerWindow extends Stage {
         getIcons().add(ICON);
         setWidth(500);
 
-        setScene(new Scene(new EditRenderServerPane(this, new RenderServerEntry("", "", FileResolveMethod.STREAMING, false, false), responseID)));
+        setScene(new Scene(new EditRenderServerPane(this, new RenderServerEntry("", "", "", FileResolveMethod.STREAMING, false, false), responseID)));
 
         setResizable(false);
         centerOnScreen();

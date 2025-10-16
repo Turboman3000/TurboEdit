@@ -16,6 +16,7 @@ import org.turbomedia.turboedit.editor.renderer.RenderServerEntry;
 import org.turbomedia.turboedit.editor.windows.SimpleMessageBox;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
 
@@ -61,7 +62,7 @@ public class EditRenderServerPane extends VBox {
                 return;
             }
 
-            var newEntry = new RenderServerEntry(serverNameInput.getText(), serverIPInput.getText(), fileModeBox.getValue(), defaultCheckbox.isSelected(), entry.buildIn());
+            var newEntry = new RenderServerEntry(UUID.randomUUID().toString(), serverNameInput.getText(), serverIPInput.getText(), fileModeBox.getValue(), defaultCheckbox.isSelected(), entry.buildIn());
 
             try {
                 if (alreadyExists) {

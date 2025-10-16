@@ -11,20 +11,26 @@ public class RendererClient extends WebSocketClient {
     public static final int DEFAULT_PORT = 59992;
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
+    private final RenderServerEntry entry;
 
-    private String serverName;
+    @Override
+    public void connect() {
+        super.connect();
+        logger.info("Connecting to renderer: {} ({})", entry.displayName(), getURI());
+    }
 
-    public RendererClient(String server, String serverName) {
-        super(URI.create("ws://" + server + "/"));
-        this.serverName = serverName;
+    public RendererClient(RenderServerEntry entry) {
+        super(URI.create("ws://" + entry.ip() + "/"));
+        this.entry = entry;
 
         connect();
-        logger.info("Connecting to renderer: {} ({})", serverName, getURI());
     }
 
     @Override
     public void onOpen(ServerHandshake serverHandshake) {
-        logger.info("Connected to Renderer: {} ({})", serverName, getURI());
+        logger.info("Connected to Renderer: {} ({})", entry.displayName(), getURI());
+
+        RenderServerConnectionManager.getConnection(entry.id()).status(ConnectionStatus.OPEN);
     }
 
     @Override
@@ -33,12 +39,15 @@ public class RendererClient extends WebSocketClient {
 
     @Override
     public void onClose(int i, String s, boolean b) {
-        logger.warn("Disconnected from renderer: {} ({})", serverName, getURI());
+        logger.warn("Disconnected from renderer: {} ({})", entry.displayName(), getURI());
+        RenderServerConnectionManager.getConnection(entry.id()).status(ConnectionStatus.CLOSED);
     }
 
     @Override
     public void onError(Exception e) {
-        logger.error("An unexpected error occurred on RenderServer: {} ({})", serverName, getURI());
-        logger.error(e.getMessage());
+        logger.error("An unexpected error occurred on RenderServer: {} ({})", entry.displayName(), getURI());
+
+        e.printStackTrace();
+        RenderServerConnectionManager.getConnection(entry.id()).status(ConnectionStatus.ERROR);
     }
 }
