@@ -15,18 +15,21 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import org.kordamp.ikonli.fluentui.FluentUiFilledAL;
 import org.kordamp.ikonli.javafx.FontIcon;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.turbomedia.turboedit.editor.events.EventSystem;
+import org.turbomedia.turboedit.editor.events.EventType;
 import org.turbomedia.turboedit.editor.misc.PreferencesFile;
 import org.turbomedia.turboedit.editor.renderer.RenderServerEntry;
 import org.turbomedia.turboedit.editor.windows.preferences.AddRenderServerWindow;
 import org.turbomedia.turboedit.editor.windows.preferences.EditRenderServerWindow;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
 
 public class RenderingTab extends Tab {
+
+    private final String responseID = UUID.randomUUID().toString();
 
     public RenderingTab() {
         var FONT_NAME = Font.getDefault().getName();
@@ -50,25 +53,13 @@ public class RenderingTab extends Tab {
             editButton.setOnAction((event) -> {
                 var selected = serverList.getSelectionModel().getSelectedItems().getFirst();
 
-                new EditRenderServerWindow(selected);
+                new EditRenderServerWindow(selected, responseID);
             });
 
             var newButton = new Button(GetText("preferences.rendering.button.add"));
             newButton.setCursor(Cursor.HAND);
             newButton.setGraphic(FontIcon.of(FluentUiFilledAL.ADD_24));
-            newButton.setOnAction((event) -> {
-                var window = new AddRenderServerWindow();
-
-                window.setOnCloseRequest(windowEvent -> {
-                    var size = serverList.getItems().size();
-
-                    for (var x = 0; x < size; x++) {
-                        serverList.getItems().remove(x);
-                    }
-
-                    serverList.getItems().addAll(PreferencesFile.CURRENT_PREFERENCES.renderServers);
-                });
-            });
+            newButton.setOnAction((event) -> new AddRenderServerWindow(responseID));
 
             var deleteButton = new Button(GetText("preferences.rendering.button.delete"));
             deleteButton.setCursor(Cursor.HAND);
@@ -87,11 +78,11 @@ public class RenderingTab extends Tab {
             });
 
             deleteButton.setOnAction((e) -> {
+                var selected = serverList.getSelectionModel().getSelectedItems().getFirst();
                 var size = serverList.getItems().size();
 
                 for (var x = 0; x < size; x++) {
                     var item = serverList.getItems().get(x);
-                    var selected = serverList.getSelectionModel().getSelectedItems().getFirst();
 
                     if (selected == item) {
                         serverList.getItems().remove(x);
@@ -106,6 +97,16 @@ public class RenderingTab extends Tab {
                 }
 
                 serverList.refresh();
+
+                selected = serverList.getSelectionModel().getSelectedItems().getFirst();
+                deleteButton.setDisable(selected.buildIn());
+            });
+
+            EventSystem.RegisterListener(EventType.PREFERENCES_CHANGED, (dat) -> {
+                if (dat != responseID) return;
+
+                serverList.getItems().clear();
+                serverList.getItems().addAll(PreferencesFile.CURRENT_PREFERENCES.renderServers);
             });
 
             var showIPsCheckbox = new CheckBox(GetText("preferences.rendering.button.show_ips"));

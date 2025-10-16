@@ -165,14 +165,31 @@ public class PreferencesFile {
                 for (var serverEntry : renderServers) {
                     serverEntry.defaultServer(false);
                 }
+            } else {
+                var isDefault = true;
+
+                for (var serverEntry : renderServers) {
+                    if (!serverEntry.defaultServer()) continue;
+
+                    isDefault = false;
+                }
+
+                if (isDefault) {
+                    entry.defaultServer(true);
+                }
             }
 
+            var oldServers = renderServers;
+            renderServers = new ArrayList<>();
+
+            renderServers.addAll(oldServers);
             renderServers.add(entry);
+
             Write();
         }
 
         public void removeRenderServers(RenderServerEntry entry) throws IOException, InterruptedException {
-            if (entry.defaultServer()) {
+            if (entry.defaultServer() && !renderServers.isEmpty()) {
                 renderServers.getFirst().defaultServer(true);
             }
 

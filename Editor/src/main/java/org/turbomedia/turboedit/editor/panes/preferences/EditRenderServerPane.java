@@ -8,6 +8,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.turbomedia.turboedit.editor.events.EventSystem;
+import org.turbomedia.turboedit.editor.events.EventType;
 import org.turbomedia.turboedit.editor.misc.PreferencesFile;
 import org.turbomedia.turboedit.editor.renderer.FileResolveMethod;
 import org.turbomedia.turboedit.editor.renderer.RenderServerEntry;
@@ -18,7 +20,7 @@ import java.io.IOException;
 import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
 
 public class EditRenderServerPane extends VBox {
-    public EditRenderServerPane(Stage stage, RenderServerEntry entry) {
+    public EditRenderServerPane(Stage stage, RenderServerEntry entry, String responseID) {
         setPadding(new Insets(15));
         setSpacing(6);
 
@@ -59,7 +61,7 @@ public class EditRenderServerPane extends VBox {
                 return;
             }
 
-            var newEntry = new RenderServerEntry(serverNameInput.getText(), serverIPInput.getText(), fileModeBox.getValue(), defaultCheckbox.isSelected(), false);
+            var newEntry = new RenderServerEntry(serverNameInput.getText(), serverIPInput.getText(), fileModeBox.getValue(), defaultCheckbox.isSelected(), entry.buildIn());
 
             try {
                 if (alreadyExists) {
@@ -70,6 +72,8 @@ public class EditRenderServerPane extends VBox {
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
+            EventSystem.CallEvent(EventType.PREFERENCES_CHANGED, responseID);
 
             stage.close();
         });

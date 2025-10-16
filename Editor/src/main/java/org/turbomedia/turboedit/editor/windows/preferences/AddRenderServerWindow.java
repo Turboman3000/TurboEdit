@@ -12,12 +12,12 @@ import static org.turbomedia.turboedit.editor.Editor.TITLE;
 import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
 
 public class AddRenderServerWindow extends Stage {
-    public AddRenderServerWindow() {
+    public AddRenderServerWindow(String responseID) {
         setTitle(TITLE + " - " + GetText("title.add_render_server"));
         getIcons().add(ICON);
         setWidth(500);
 
-        setScene(new Scene(new EditRenderServerPane(this, new RenderServerEntry("", "", FileResolveMethod.STREAMING, false, false))));
+        setScene(new Scene(new EditRenderServerPane(this, new RenderServerEntry("", "", FileResolveMethod.STREAMING, false, false), responseID)));
 
         setResizable(false);
         centerOnScreen();
