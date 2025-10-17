@@ -17,7 +17,7 @@ public class ShortcutHandler {
                 }
             } else {
                 if (event.getCode() == KeyCode.SPACE) {
-                    EventSystem.CallEvent(EventType.PLAYBACK_TOGGLE, null);
+                    EventSystem.CallEvent(EventType.PLAYBACK_TOGGLE);
                 }
             }
         });

@@ -112,7 +112,7 @@ public class NewProjectPane extends GridPane {
             stage.close();
 
             try {
-                ProjectManager.LoadProject(new File(currentPath), parentStage);
+                ProjectManager.LoadProject(new File(currentPath));
             } catch (IOException e) {
                 logger.error("{} = {}", e.getClass().getName(), e.getMessage());
             }

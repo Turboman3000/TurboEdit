@@ -19,6 +19,10 @@ public class EventSystem {
         listeners.remove(id);
     }
 
+    public static void CallEvent(EventType type) {
+        CallEvent(type, null);
+    }
+
     public static void CallEvent(EventType type, Object data) {
         var map = (HashMap<String, Event>) listeners.clone();
 

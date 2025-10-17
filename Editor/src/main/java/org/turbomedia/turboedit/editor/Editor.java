@@ -16,6 +16,7 @@ import org.turbomedia.turboedit.editor.events.EventSystem;
 import org.turbomedia.turboedit.editor.events.EventType;
 import org.turbomedia.turboedit.editor.events.ShortcutHandler;
 import org.turbomedia.turboedit.editor.events.WindowResizeEventData;
+import org.turbomedia.turboedit.editor.integration.DiscordIntegration;
 import org.turbomedia.turboedit.editor.misc.Locale;
 import org.turbomedia.turboedit.editor.misc.PreferencesFile;
 import org.turbomedia.turboedit.editor.misc.StyleManager;
@@ -23,8 +24,10 @@ import org.turbomedia.turboedit.editor.panes.file_browser.FileBrowserPane;
 import org.turbomedia.turboedit.editor.panes.player.PlayerPane;
 import org.turbomedia.turboedit.editor.panes.timeline.TimelinePane;
 import org.turbomedia.turboedit.renderer.Renderer;
+import org.turbomedia.turboedit.shared.project.Project;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Editor extends Application {
@@ -58,6 +61,23 @@ public class Editor extends Application {
             }
         }, "RenderServer | Build-In");
         RENDER_SERVER_THREAD.start();
+
+        {
+            var project = new Project(null, "Untitled Project", ProjectManager.CURRENT_VERSION, new ArrayList<>(), new ArrayList<>());
+
+            EventSystem.RegisterListener(EventType.LOADED_PROJECT, (dat) -> {
+                var data = ((Project) dat);
+
+                if (data.path() == null) {
+                    stage.setTitle(TITLE + " - " + data.name());
+                } else {
+                    stage.setTitle(TITLE + " - " + data.name() + " [" + data.path() + "]");
+                }
+            });
+
+            ProjectManager.CURRENT_PROJECT = project;
+            EventSystem.CallEvent(EventType.LOADED_PROJECT, project);
+        }
 
         StyleManager.UpdateStyle();
 
@@ -95,7 +115,6 @@ public class Editor extends Application {
 
         stage.setScene(scene);
         stage.getIcons().add(ICON);
-        stage.setTitle(TITLE);
         stage.setMaximized(true);
         stage.show();
         stage.requestFocus();
@@ -132,5 +151,7 @@ public class Editor extends Application {
         );
 
         EventSystem.CallEvent(EventType.WINDOW_RESIZE, data);
+
+        new DiscordIntegration().start();
     }
 }

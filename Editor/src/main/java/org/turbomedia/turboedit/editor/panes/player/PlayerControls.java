@@ -60,7 +60,7 @@ public class PlayerControls extends VBox {
 
         var playButton = new Button();
         playButton.setFocusTraversable(false);
-        playButton.setOnAction((event) -> EventSystem.CallEvent(EventType.PLAYBACK_TOGGLE, null));
+        playButton.setOnAction((event) -> EventSystem.CallEvent(EventType.PLAYBACK_TOGGLE));
 
         EventSystem.RegisterListener(EventType.PLAYBACK_TOGGLE, (data) -> {
             playbackState = !playbackState;

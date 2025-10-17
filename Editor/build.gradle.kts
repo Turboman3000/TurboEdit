@@ -9,6 +9,7 @@ version = "alpha-1.0"
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
@@ -29,6 +30,7 @@ dependencies {
     implementation("commons-cli:commons-cli:1.10.0")
     implementation("net.harawata:appdirs:1.4.0")
     implementation("com.google.code.gson:gson:2.13.2")
+    implementation("com.github.JnCrMx:discord-game-sdk4j:v1.0.0")
 
     implementation(project(":shared"))
     implementation(project(":renderer"))

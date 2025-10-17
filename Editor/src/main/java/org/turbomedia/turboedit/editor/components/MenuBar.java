@@ -1,16 +1,16 @@
 package org.turbomedia.turboedit.editor.components;
 
-import org.turbomedia.turboedit.editor.ProjectManager;
-import org.turbomedia.turboedit.editor.windows.AboutWindow;
-import org.turbomedia.turboedit.editor.windows.NewProjectWindow;
-import org.turbomedia.turboedit.editor.windows.preferences.PreferencesWindow;
-import org.turbomedia.turboedit.editor.windows.RenderQueueWindow;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.turbomedia.turboedit.editor.ProjectManager;
+import org.turbomedia.turboedit.editor.windows.AboutWindow;
+import org.turbomedia.turboedit.editor.windows.NewProjectWindow;
+import org.turbomedia.turboedit.editor.windows.RenderQueueWindow;
+import org.turbomedia.turboedit.editor.windows.preferences.PreferencesWindow;
 
 import java.awt.*;
 import java.io.IOException;
@@ -51,7 +51,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
             var file = chooser.showOpenDialog(stage);
 
             try {
-                ProjectManager.LoadProject(file, stage);
+                ProjectManager.LoadProject(file);
             } catch (IOException e) {
                 logger.error("{} = {}", e.getClass().getName(), e.getMessage());
             }
