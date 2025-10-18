@@ -9,6 +9,7 @@ import org.turbomedia.turboedit.editor.events.EventType;
 import org.turbomedia.turboedit.editor.events.ThemeChangedEventData;
 import org.turbomedia.turboedit.editor.misc.StyleManager;
 import org.turbomedia.turboedit.editor.windows.errors.FileErrorWindow;
+import org.turbomedia.turboedit.shared.project.ProjectFile;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -72,7 +73,7 @@ public class FileBrowserPane extends HBox {
             }
         });
 
-        flow.getChildren().add(new FileCard());
+        flow.getChildren().add(new FileCard(new ProjectFile("Test.mp4", "", "video/mp4", null, "", 0, true, 1920, 1080, 60, "AV1", null)));
         flow.setPadding(new Insets(15));
         flow.setVgap(GRID_GAP);
         flow.setHgap(GRID_GAP);

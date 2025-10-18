@@ -17,5 +17,6 @@ public class ProjectManager {
         CURRENT_PROJECT = ProjectReader.Read(path.getAbsolutePath());
 
         EventSystem.CallEvent(EventType.LOADED_PROJECT, CURRENT_PROJECT);
+        EventSystem.CallEvent(EventType.DISCORD_UPDATE_ACTIVITY);
     }
 }

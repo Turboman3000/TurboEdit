@@ -15,15 +15,17 @@ import java.io.IOException;
 import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
 import static org.turbomedia.turboedit.editor.misc.PreferencesFile.CURRENT_PREFERENCES;
 
-public class AppearanceTab extends Tab {
+public class GeneralTab extends Tab {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    public AppearanceTab() {
+    public GeneralTab() {
         var languageSelection = new ChoiceBox<Language>();
-        languageSelection.getItems().add(new Language(GetText("language.en_us"), "en_us"));
-      /*  languageSelection.getItems().add(new Language(GetText("language.de"), "de"));
-        languageSelection.getItems().add(new Language(GetText("language.gsw"), "gsw"));
-        languageSelection.getItems().add(new Language(GetText("language.fr"), "fr"));*/
+        languageSelection.getItems().addAll(
+                new Language(GetText("language.en_us"), "en_us")
+                //   new Language(GetText("language.de"), "de"),
+                //   new Language(GetText("language.gsw"), "gsw"),
+                //   new Language(GetText("language.fr"), "fr")
+        );
 
         for (var language : languageSelection.getItems()) {
             if (language.value.equals(CURRENT_PREFERENCES.language())) {
@@ -40,14 +42,16 @@ public class AppearanceTab extends Tab {
             }
         });
 
-        var languageBox = new HBox(new Label(GetText("preferences.appearance.choice.language.label")), languageSelection);
+        var languageBox = new HBox(new Label(GetText("preferences.general.choice.language.label")), languageSelection);
         languageBox.setAlignment(Pos.CENTER);
         languageBox.setSpacing(10);
 
         var colorModeSelection = new ChoiceBox<ColorModeValue>();
-        colorModeSelection.getItems().add(new ColorModeValue(GetText("preferences.appearance.choice.color_mode.system"), ColorMode.SYSTEM));
-        colorModeSelection.getItems().add(new ColorModeValue(GetText("preferences.appearance.choice.color_mode.dark"), ColorMode.DARK));
-        colorModeSelection.getItems().add(new ColorModeValue(GetText("preferences.appearance.choice.color_mode.light"), ColorMode.LIGHT));
+        colorModeSelection.getItems().addAll(
+                new ColorModeValue(GetText("preferences.general.choice.color_mode.system"), ColorMode.SYSTEM),
+                new ColorModeValue(GetText("preferences.general.choice.color_mode.dark"), ColorMode.DARK),
+                new ColorModeValue(GetText("preferences.general.choice.color_mode.light"), ColorMode.LIGHT)
+        );
 
         for (var mode : colorModeSelection.getItems()) {
             if (mode.value.ordinal() == CURRENT_PREFERENCES.colorMode()) {
@@ -64,7 +68,7 @@ public class AppearanceTab extends Tab {
             }
         });
 
-        var colorModeBox = new HBox(new Label(GetText("preferences.appearance.choice.color_mode.label")), colorModeSelection);
+        var colorModeBox = new HBox(new Label(GetText("preferences.general.choice.color_mode.label")), colorModeSelection);
         colorModeBox.setAlignment(Pos.CENTER);
         colorModeBox.setSpacing(10);
 
@@ -72,7 +76,7 @@ public class AppearanceTab extends Tab {
         box.setPadding(new Insets(10));
         box.setSpacing(10);
 
-        setText(GetText("preferences.appearance.tab"));
+        setText(GetText("preferences.general.tab"));
         setContent(box);
     }
 

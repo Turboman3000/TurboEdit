@@ -17,25 +17,28 @@ The file extension will be `.tvp` (**T**urbo**V**ideo **P**roject).
 
 ## ProjectFile
 
-| Name         | Type                          | Notes / Description                                       |
-|--------------|-------------------------------|-----------------------------------------------------------|
-| Name         | string                        | The name of the file                                      |
-| Path         | string                        | The relative path (from the **Project File**) of the file |
-| Type         | string                        | The MIME-Type of the file                                 |
-| PreviewImage | byte[]                        | Preview image (First frame of video) in JPEG format       |
-| IsVideo      | bool                          |                                                           |
-| VideoHeight  | int32                         | Only present if `IsVideo` is `true`                       |
-| VideoWidth   | int32                         | Only present if `IsVideo` is `true`                       |
-| VideoFPS     | int32                         | Only present if `IsVideo` is `true`                       |
-| Audio        | [AudioObject](#audioobject)[] | Only present if `IsVideo` is `true`                       |
+| Name         | Type                          | Notes / Description                                                      |
+|--------------|-------------------------------|--------------------------------------------------------------------------|
+| Name         | string                        | The name of the file                                                     |
+| Path         | string                        | The relative path (from the **Project File**) of the file                |
+| Type         | string                        | The MIME-Type of the file                                                |
+| PreviewImage | byte[]                        | Preview image (First frame of video) in JPEG format                      |
+| Hash         | string                        | MD5-Hash of file                                                         |
+| Size         | int64                         | Size of file in bytes                                                    |
+| IsVideo      | bool                          |                                                                          |
+| VideoWidth   | int32                         | Only present if `IsVideo` is `true`                                      |
+| VideoHeight  | int32                         | Only present if `IsVideo` is `true`                                      |
+| VideoFPS     | int32                         | Only present if `IsVideo` is `true`                                      |
+| VideoCodec   | string                        | Only present if `IsVideo` is `true`; for example: `H.264`, `HEVC`, `AV1` |
+| Audio        | [AudioObject](#audioobject)[] | Only present if `IsVideo` is `true`                                      |
 
 ## AudioObject
 
-| Name      | Type   | Notes / Description                    |
-|-----------|--------|----------------------------------------|
-| Layer     | int32  | Layer ID                               |
-| LayerName | string | Name of the audio layer                |
-| Waveform  | byte[] | Audio waveform in JPEG format          |
+| Name      | Type   | Notes / Description           |
+|-----------|--------|-------------------------------|
+| Layer     | int32  | Layer ID                      |
+| LayerName | string | Name of the audio layer       |
+| Waveform  | byte[] | Audio waveform in JPEG format |
 
 ## TimelineData
 

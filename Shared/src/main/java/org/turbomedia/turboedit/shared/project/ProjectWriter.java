@@ -49,12 +49,15 @@ public class ProjectWriter {
             packer.packByte(data.previewImage()[b]);
         }
 
+        packer.packString(data.hash());
+        packer.packLong(data.size());
         packer.packBoolean(data.isVideo());
 
         if (data.isVideo()) {
-            packer.packInt(data.videoHeight());
             packer.packInt(data.videoWidth());
+            packer.packInt(data.videoHeight());
             packer.packInt(data.videoFPS());
+            packer.packString(data.videoCodec());
 
             // Audio Object
             packer.packArrayHeader(data.audio().size());

@@ -33,12 +33,12 @@
   "new_project.textfield.name.placeholder": "New Project",
   "new_project.textfield.path.label": "Path",
 
-  "preferences.appearance.tab": "Appearance",
-  "preferences.appearance.choice.language.label": "Language",
-  "preferences.appearance.choice.color_mode.label": "Color Mode",
-  "preferences.appearance.choice.color_mode.system": "Follow System",
-  "preferences.appearance.choice.color_mode.dark": "Dark",
-  "preferences.appearance.choice.color_mode.light": "Light",
+  "preferences.general.tab": "General",
+  "preferences.general.choice.language.label": "Language",
+  "preferences.general.choice.color_mode.label": "Color Mode",
+  "preferences.general.choice.color_mode.system": "Follow System",
+  "preferences.general.choice.color_mode.dark": "Dark",
+  "preferences.general.choice.color_mode.light": "Light",
 
   "preferences.rendering.tab": "Rendering",
   "preferences.rendering.title.render_servers": "Rendering",

@@ -46,16 +46,21 @@ public class ProjectReader {
             previewImage[b] = unpacker.unpackByte();
         }
 
+        var hash = unpacker.unpackString();
+        var size = unpacker.unpackLong();
+
         var isVideo = unpacker.unpackBoolean();
-        int videoHeight = -1;
         int videoWidth = -1;
+        int videoHeight = -1;
         int videoFPS = -1;
+        String videoCodec = "";
         var audio = new ArrayList<AudioObject>();
 
         if (isVideo) {
-            videoHeight = unpacker.unpackInt();
             videoWidth = unpacker.unpackInt();
+            videoHeight = unpacker.unpackInt();
             videoFPS = unpacker.unpackInt();
+            videoCodec = unpacker.unpackString();
 
             var arrayHeader = unpacker.unpackArrayHeader();
 
@@ -64,7 +69,7 @@ public class ProjectReader {
             }
         }
 
-        return new ProjectFile(name, path, type, previewImage, isVideo, videoHeight, videoWidth, videoFPS, audio);
+        return new ProjectFile(name, path, type, previewImage, hash, size, isVideo, videoHeight, videoWidth, videoFPS, videoCodec, audio);
     }
 
     private static AudioObject readAudioObject(MessageUnpacker unpacker) throws IOException {

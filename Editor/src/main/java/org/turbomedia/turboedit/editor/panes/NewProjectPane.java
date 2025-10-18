@@ -29,7 +29,7 @@ import static org.turbomedia.turboedit.editor.misc.Locale.GetText;
 public class NewProjectPane extends GridPane {
     private String currentBasePath;
     private String currentPath;
-    private String currentName;
+    private String currentName = GetText("new_project.textfield.name.placeholder");
 
     private final TextField pathTextField = new TextField();
     private final Button createButton = new Button(GetText("new_project.button.create"));
