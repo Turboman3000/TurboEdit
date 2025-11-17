@@ -1,10 +1,11 @@
 plugins {
     id("java")
+    kotlin("jvm") version "2.2.21"
     application
     id("org.openjfx.javafxplugin") version "0.0.14"
 }
 
-group = "org.turbomedia.turboedit"
+group = "turboedit"
 version = "alpha-1.0"
 
 repositories {
@@ -13,8 +14,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     implementation("org.slf4j:slf4j-api:2.0.13")
     implementation("ch.qos.logback:logback-classic:1.5.13")
@@ -33,7 +35,7 @@ dependencies {
     implementation("com.github.JnCrMx:discord-game-sdk4j:v1.0.0")
 
     implementation(project(":shared"))
-    implementation(project(":renderer"))
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 javafx {
@@ -43,12 +45,24 @@ javafx {
 
 application {
     applicationName = "TurboEdit"
-    mainClass = "org.turbomedia.turboedit.editor.Editor"
+    mainClass = "turboedit.editor.AppKt"
+}
+
+sourceSets.main {
+    java.srcDirs("src/main/java", "src/main/kotlin")
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>().configureEach {
+    jvmTargetValidationMode.set(org.jetbrains.kotlin.gradle.dsl.jvm.JvmTargetValidationMode.WARNING)
+}
+
+kotlin {
+    jvmToolchain(21)
 }
 
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-Class"] = "org.turbomedia.turboedit.editor.Editor"
+        attributes["Main-Class"] = "turboedit.editor.AppKt"
         attributes["Class-Path"] = configurations.runtimeClasspath.get()
             .joinToString(separator = " ") { dependencyFile ->
                 "lib/${dependencyFile.name}"
@@ -58,6 +72,10 @@ tasks.withType<Jar> {
 
 tasks.withType<JavaCompile>().configureEach {
     options.compilerArgs.add("--enable-preview")
+}
+
+tasks.named<Test>("test") {
+    useJUnitPlatform()
 }
 
 var commonDistribution: CopySpec = copySpec {

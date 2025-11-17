@@ -1,0 +1,13 @@
+package turboedit.editor.events
+
+enum class EventType {
+    THEME_CHANGED,
+    CLIP_SELECTED,
+    WINDOW_RESIZE,
+    PREFERENCES_CHANGED,
+    PLAYBACK_TOGGLE,
+    PLAYBACK_SET_TIME,
+    RENDERER_SERVER_STATUS,
+    DISCORD_UPDATE_ACTIVITY,
+    LOADED_PROJECT
+}

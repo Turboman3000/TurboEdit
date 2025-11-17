@@ -10,7 +10,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/Editor" />
-            <option value="$PROJECT_DIR$/Renderer" />
             <option value="$PROJECT_DIR$/Shared" />
           </set>
         </option>

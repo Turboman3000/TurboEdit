@@ -8,9 +8,6 @@
       <module fileurl="file://$PROJECT_DIR$/TurboEdit.iml" filepath="$PROJECT_DIR$/TurboEdit.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/editor.iml" filepath="$PROJECT_DIR$/.idea/modules/editor.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/editor.main.iml" filepath="$PROJECT_DIR$/.idea/modules/editor.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-709047753/editor.renderer.iml" filepath="$PROJECT_DIR$/.idea/modules/-709047753/editor.renderer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-709047753/editor.renderer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-709047753/editor.renderer.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-709047753/editor.renderer.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-709047753/editor.renderer.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/editor.shared.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/editor.shared.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/editor.shared.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/editor.shared.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-841219367/editor.shared.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-841219367/editor.shared.test.iml" />
